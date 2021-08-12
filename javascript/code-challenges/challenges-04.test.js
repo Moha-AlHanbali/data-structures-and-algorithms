@@ -238,6 +238,30 @@ If two people have the same full name, the younger one should come first. Do not
 
 const sortPeopleBetter = (arr) => {
   // Solution code here...
+  let betterPeopleArray = arr.sort((a, b) => {
+    if (a.lastName.toLowerCase() > b.lastName.toLowerCase()) {
+      return 1;
+    } else if (a.lastName.toLowerCase() < b.lastName.toLowerCase()) {
+      return -1;
+    } else {
+      if (a.firstName.toLowerCase() > b.firstName.toLowerCase()) {
+        return 1;
+      } else if (a.firstName.toLowerCase() < b.firstName.toLowerCase()) {
+        return -1;
+      } else {
+        if (a.age > b.age) {
+          return 1;
+        }
+        else if (a.age < b.age) {
+          return -1;
+        }
+        else {
+          return 0;
+        }
+      }
+    }
+  });
+  return betterPeopleArray;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -264,6 +288,17 @@ const meetings = [
 
 const sortMeetingsByDay = (arr) => {
   // Solution code here...
+  let mappingObject = {
+    'Monday': 0,
+    'Tuesday': 1,
+    'Wednesday': 2,
+    'Friday': 3,
+  };
+
+  let meetingsArray = arr.sort((a, b) => {
+    return mappingObject[a.dayOfWeek] - mappingObject[b.dayOfWeek];
+  });
+  return meetingsArray;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -278,6 +313,24 @@ You DO NOT need to use your solution to Challenge 9 in completing Challenge 10.
 
 const sortSchedule = (arr) => {
   // Solution code here...
+  let timeArray = arr.sort((a, b) => {
+    if (a.dayOfWeek === b.dayOfWeek){
+      if(a.end - a.start > b.end - b.start){
+        return 1;
+      } else if (a.end - a.start < b.end - b.start){
+        return -1;
+      } else {
+        if(a.start > b.start){
+          return 1;
+        } else if(a.start < b.start){
+          return -1;
+        } else {
+          return 0;
+        }
+      }
+    }
+  });
+  return timeArray;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -390,7 +443,7 @@ describe('Testing challenge 10', () => {
   });
 });
 
-xdescribe('Testing challenge 11', () => {
+describe('Testing challenge 11', () => {
   test('It should sort people with more strict ordering', () => {
     const family = [
       new Person('Casey', 'Codefellows', 55),
@@ -411,7 +464,7 @@ xdescribe('Testing challenge 11', () => {
   });
 });
 
-xdescribe('Testing challenge 12', () => {
+describe('Testing challenge 12', () => {
   test('It should sort meetings by the day on which they happen', () => {
     const sortedMeetings = sortMeetingsByDay(meetings);
     expect(sortedMeetings.slice(0, 2)).toEqual(expect.arrayContaining([new Meeting('Monday', '0900', '0945'), new Meeting('Monday', '0900', '1000')]));
@@ -421,7 +474,7 @@ xdescribe('Testing challenge 12', () => {
   });
 });
 
-xdescribe('Testing challenge 13', () => {
+describe('Testing challenge 13', () => {
   test('It should sort meetings by when they happen', () => {
     expect(sortSchedule(meetings)).toStrictEqual([
       new Meeting('Monday', '0900', '0945'),
