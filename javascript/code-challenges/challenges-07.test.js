@@ -153,12 +153,13 @@ const listFoods = (recipe) => {
   firstArray.map((item) => {
     let space = item.indexOf(" ");
     secondArray.push(item.slice(space));
+
   });
   secondArray.map((test) => {
     if (test.includes("pound")) {
       let space2 = test.lastIndexOf(" ");
       result.push(test.slice(space2).substring(1));
-    } else {
+    }else {
       result.push(test.substring(1));
     }
   });
