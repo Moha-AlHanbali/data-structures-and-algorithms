@@ -153,6 +153,7 @@ const listFoods = (recipe) => {
   firstArray.map((item) => {
     let space = item.indexOf(" ");
     secondArray.push(item.slice(space));
+
   });
   secondArray.map((test) => {
     if (test.includes("pound")) {
