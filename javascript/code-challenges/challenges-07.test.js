@@ -145,15 +145,24 @@ const gruffaloCrumble = {
 const listFoods = (recipe) => {
   let result = [];
   // Solution code here...
+  let firstArray = [];
+  let secondArray = [];
   recipe.ingredients.map((element) => {
-    let firstArray = [];
-    firstArray.push(element.slice(-15));
-    firstArray.map((item) => {
-      let space = item.indexOf(" ");
-      result.push(item.slice(space));
-    });
-
+    firstArray.push(element.slice(-17));
   });
+  firstArray.map((item) => {
+    let space = item.indexOf(" ");
+    secondArray.push(item.slice(space));
+  });
+  secondArray.map((test) => {
+    if (test.includes("pound")) {
+      let space2 = test.lastIndexOf(" ");
+      result.push(test.slice(space2).substring(1));
+    }else {
+      result.push(test.substring(1));
+    }
+  });
+
   return result;
 };
 
