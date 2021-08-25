@@ -103,7 +103,7 @@ For example:
 
 const isNum = (input) => {
   // Solution code here...
-  let regex = /[0-9]/
+  let regex = /[0-9]/;
   let check = regex.test(input);
   return check;
 };
