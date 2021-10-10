@@ -5,7 +5,6 @@
 ![reversseArray](reverseArray.PNG)
 
 ## Approach & Efficiency
-<!-- What approach did you take? Discuss Why. What is the Big O space/time for this approach? -->
 - I tackled this problem by decomposing the required output, realted it to the input, and made connections in-between using logic then converted it into code.
 - I think in this specific case, since the output uses the same input "items", it is necessary to understand what they went through in order to become what they'd become.
 - Linear notation for time and constant notation for space (I guess).
