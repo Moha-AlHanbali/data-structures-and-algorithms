@@ -27,3 +27,5 @@ To run your tests
 - [array-insert-shift](./python/code_challenges/array-insert-shift/README.md)
 
 - [array-binary-search](./python/code_challenges/array-binary-search/README.md)
+
+- [Singly Linked List](./python/linked_list/README.md)
