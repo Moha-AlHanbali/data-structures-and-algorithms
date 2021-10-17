@@ -57,7 +57,7 @@ class LinkedList:
         return False
 
 
-    def to_string(self):
+    def __str__(self):
         """
         Returns a formatted string representing all the values in the Linked List.
 
@@ -78,6 +78,68 @@ class LinkedList:
         return(output)
 
 
+    def append(self, value):
+        """
+        Adds a new node with the given value to the end of the list
+
+        Arguments:
+        value: any
+
+        Return: None
+        """
+        self.current = self.head
+
+        while self.current != None:
+            if self.current.next == None:
+                self.current.next = Node(value)
+                break
+            self.current = self.current.next
+
+
+    def insert_before(self,value, new_value):
+        """
+        Adds a new node with the given new value immediately before the first node that has the value specified.
+
+        Arguments:
+        value: any
+        new_value: any
+
+        Return: None
+        """
+
+        self.current = self.head
+
+        while self.current.next != None:
+            if self.current.value == value:
+                self.insert(new_value)
+                break
+
+            if self.current.next.value == value:
+                self.current.next = Node(new_value, self.current.next)
+                break
+            self.current = self.current.next
+
+
+    def insert_after(self,value, new_value):
+        """
+        Adds a new node with the given new value immediately after the first node that has the value specified.
+
+        Arguments:
+        value: any
+        new_value: any
+
+        Return: None
+        """
+
+        self.current = self.head
+
+        while self.current != None:
+            if self.current.value == value:
+                self.current.next = Node(new_value, self.current.next)
+                break
+            self.current = self.current.next
+
+
 # if __name__ == "__main__":
 #     ll = LinkedList()
 #     print(ll.insert("ABC"))
@@ -89,4 +151,10 @@ class LinkedList:
 #     print(ll.insert(123))
 #     print(ll.head.value)
 #     print(ll.includes("ABE"))
-#     print(ll.to_string())
+#     print(str(ll))
+#     print(ll.append("last_item"))
+#     print(str(ll))
+#     print(ll.insert_before("EFG", "insert_before"))
+#     print(str(ll))
+#     print(ll.insert_after("EFG", "insert_after"))
+#     print(str(ll))
