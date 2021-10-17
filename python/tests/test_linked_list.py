@@ -111,7 +111,103 @@ def test_link_to_string():
     expected = "{'FIRST VALUE'} -> {'SECOND VALUE'} -> {'THIRD VALUE'} -> {4} -> NULL"
 
     #Act
-    actual = ll.to_string()
+    actual = str(ll)
+
+    #Assert
+    assert actual == expected
+
+def test_link_append():
+    #Arrange
+    ll = LinkedList()
+    ll.insert("THIRD VALUE")
+    ll.insert("SECOND VALUE")
+    ll.insert("FIRST VALUE")
+    ll.append("FOURTH VALUE")
+    expected = "{'FIRST VALUE'} -> {'SECOND VALUE'} -> {'THIRD VALUE'} -> {'FOURTH VALUE'} -> NULL"
+
+    #Act
+    actual = str(ll)
+
+    #Assert
+    assert actual == expected
+
+
+def test_link_append_multiple():
+    #Arrange
+    ll = LinkedList()
+    ll.insert("THIRD VALUE")
+    ll.insert("SECOND VALUE")
+    ll.insert("FIRST VALUE")
+    ll.append("FOURTH VALUE")
+    ll.append("FIFTH VALUE")
+    ll.append("SIXTH VALUE")
+    expected = "{'FIRST VALUE'} -> {'SECOND VALUE'} -> {'THIRD VALUE'} -> {'FOURTH VALUE'} -> {'FIFTH VALUE'} -> {'SIXTH VALUE'} -> NULL"
+    #Act
+    actual = str(ll)
+
+    #Assert
+    assert actual == expected
+
+
+def test_link_insert_before_middle():
+    #Arrange
+    ll = LinkedList()
+    ll.insert("THIRD VALUE")
+    ll.insert("SECOND VALUE")
+    ll.insert("FIRST VALUE")
+    ll.insert_before("SECOND VALUE", "NEW VALUE")
+    expected = "{'FIRST VALUE'} -> {'NEW VALUE'} -> {'SECOND VALUE'} -> {'THIRD VALUE'} -> NULL"
+
+    #Act
+    actual = str(ll)
+
+    #Assert
+    assert actual == expected
+
+
+def test_link_insert_before_first():
+    #Arrange
+    ll = LinkedList()
+    ll.insert("THIRD VALUE")
+    ll.insert("SECOND VALUE")
+    ll.insert("FIRST VALUE")
+    ll.insert_before("FIRST VALUE", "NEW VALUE")
+    expected = "{'NEW VALUE'} -> {'FIRST VALUE'} -> {'SECOND VALUE'} -> {'THIRD VALUE'} -> NULL"
+
+    #Act
+    actual = str(ll)
+
+    #Assert
+    assert actual == expected
+
+
+def test_link_insert_after_middle():
+    #Arrange
+    ll = LinkedList()
+    ll.insert("THIRD VALUE")
+    ll.insert("SECOND VALUE")
+    ll.insert("FIRST VALUE")
+    ll.insert_after("SECOND VALUE", "NEW VALUE")
+    expected = "{'FIRST VALUE'} -> {'SECOND VALUE'} -> {'NEW VALUE'} -> {'THIRD VALUE'} -> NULL"
+
+    #Act
+    actual = str(ll)
+
+    #Assert
+    assert actual == expected
+
+
+def test_link_insert_after_last():
+    #Arrange
+    ll = LinkedList()
+    ll.insert("THIRD VALUE")
+    ll.insert("SECOND VALUE")
+    ll.insert("FIRST VALUE")
+    ll.insert_after("THIRD VALUE", "NEW VALUE")
+    expected = "{'FIRST VALUE'} -> {'SECOND VALUE'} -> {'THIRD VALUE'} -> {'NEW VALUE'} -> NULL"
+
+    #Act
+    actual = str(ll)
 
     #Assert
     assert actual == expected
