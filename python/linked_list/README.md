@@ -13,7 +13,16 @@
 
 ## Whiteboard Process
 
+- linked-list-insertions
+
 ![linked-list-insertions.png](assets/linked-list-insertions.png)
+
+<br>
+
+- linked-list-kth
+
+![linked-list-kth.png](assets/linked-list-kth.png)
+
 
 <br>
 
@@ -23,6 +32,7 @@
 - O time complexity for (includes and to_string) methods: O(n)
 - O time complexity for (append) method: O(n)
 - O time complexity for (insert_before and insert_after) methods: O(n)
+- O time complexity for (kth_from_end): O(n)
 
 <br>
 
@@ -82,6 +92,14 @@
 
         Return: None
 
+- LinkedList.kth_from_end()
+        Return the node’s value that is k places from the tail of the linked list.
+
+        Arguments:
+        k: int
+
+        Return: Node Value
+
 <br>
 
 ## Testing Goals
@@ -102,3 +120,11 @@
 - [x] Can successfully insert a node before the first node of a linked list
 - [x] Can successfully insert after a node in the middle of the linked list
 - [x] Can successfully insert a node after the last node of the linked list
+
+--------------------------------------------------------------------------------------------
+
+- [x] Where k is greater than the length of the linked list
+- [x] Where k and the length of the list are the same
+- [x] Where k is not a positive integer
+- [x] Where the linked list is of a size 1
+- [x] “Happy Path” where k is not at the end, but somewhere in the middle of the linked list

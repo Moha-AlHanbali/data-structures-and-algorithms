@@ -49,7 +49,7 @@ class LinkedList:
         """
         self.current = self.head
 
-        while self.current != None:
+        while self.current:
             print("FLAG", self.current.value)
             if self.current.value == value:
                 return True
@@ -70,7 +70,7 @@ class LinkedList:
 
         output = ""
 
-        while self.current != None:
+        while self.current:
             print("PRINT", self.current.value)
             output = output + (f"{ {self.current.value} } -> ")
             self.current = self.current.next
@@ -89,7 +89,7 @@ class LinkedList:
         """
         self.current = self.head
 
-        while self.current != None:
+        while self.current:
             if self.current.next == None:
                 self.current.next = Node(value)
                 break
@@ -109,7 +109,7 @@ class LinkedList:
 
         self.current = self.head
 
-        while self.current.next != None:
+        while self.current.next:
             if self.current.value == value:
                 self.insert(new_value)
                 break
@@ -133,11 +133,40 @@ class LinkedList:
 
         self.current = self.head
 
-        while self.current != None:
+        while self.current:
             if self.current.value == value:
                 self.current.next = Node(new_value, self.current.next)
                 break
             self.current = self.current.next
+
+
+    def kth_from_end(self, k:int):
+        """
+        Return the node’s value that is k places from the tail of the linked list.
+
+        Arguments:
+        k: int
+
+        Return: Node Value
+        """
+
+        self.current = self.head
+        length = -1
+        counter = 0
+
+        while self.current:
+            length += 1
+            self.current = self.current.next
+
+        if k > length or k < 0:
+            raise Exception("An error occurred. Try using a positive value that doesn't exceed the list length for the argument (k).")
+
+        self.current = self.head
+        while self.current:
+            if k == (length - counter):
+                return self.current.value
+            self.current = self.current.next
+            counter += 1
 
 
 # if __name__ == "__main__":
@@ -158,3 +187,4 @@ class LinkedList:
 #     print(str(ll))
 #     print(ll.insert_after("EFG", "insert_after"))
 #     print(str(ll))
+#     print(ll.kth_from_end(8))

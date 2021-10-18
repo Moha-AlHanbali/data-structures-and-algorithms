@@ -1,4 +1,5 @@
 from linked_list.linked_list import LinkedList, Node
+import unittest
 import pytest
 
 
@@ -211,3 +212,87 @@ def test_link_insert_after_last():
 
     #Assert
     assert actual == expected
+
+
+def test_link_kth_from_end():
+    #Arrange
+    ll = LinkedList()
+    ll.insert("THIRD VALUE")
+    ll.insert("SECOND VALUE")
+    ll.insert("FIRST VALUE")
+
+    expected = "SECOND VALUE"
+
+    #Act
+    actual = ll.kth_from_end(1)
+
+    #Assert
+    assert actual == expected
+
+
+def test_link_kth_from_end_greater_than_length():
+    #Arrange
+    ll = LinkedList()
+    ll.insert("THIRD VALUE")
+    ll.insert("SECOND VALUE")
+    ll.insert("FIRST VALUE")
+
+    #Assert
+    with pytest.raises(Exception):
+        assert ll.kth_from_end(10)
+
+
+
+def test_link_kth_from_end_same_length_exact():
+    #Arrange
+    ll = LinkedList()
+    ll.insert("THIRD VALUE")
+    ll.insert("SECOND VALUE")
+    ll.insert("FIRST VALUE")
+
+    #Assert
+    with pytest.raises(Exception):
+        assert ll.kth_from_end(3)
+
+
+
+def test_link_kth_from_end_same_length_relative():
+    #Arrange
+    ll = LinkedList()
+    ll.insert("THIRD VALUE")
+    ll.insert("SECOND VALUE")
+    ll.insert("FIRST VALUE")
+
+    expected = "FIRST VALUE"
+
+    #Act
+    actual = ll.kth_from_end(2)
+
+    #Assert
+    assert actual == expected
+
+
+def test_link_kth_from_end_same_length_of_1():
+    #Arrange
+    ll = LinkedList()
+    ll.insert("FIRST VALUE")
+
+    expected = "FIRST VALUE"
+
+    #Act
+    actual = ll.kth_from_end(0)
+
+    #Assert
+    assert actual == expected
+
+
+def test_link_kth_from_end_negative():
+    #Arrange
+    ll = LinkedList()
+    ll.insert("FIRST VALUE")
+    ll.insert("SECOND VALUE")
+    ll.insert("FIRST VALUE")
+
+    #Assert
+    with pytest.raises(Exception):
+        assert ll.kth_from_end(-1)
