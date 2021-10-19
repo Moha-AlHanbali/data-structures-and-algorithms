@@ -1,4 +1,4 @@
-from linked_list.linked_list import LinkedList, Node
+from linked_list.linked_list import LinkedList, Node, linked_list_zip
 import unittest
 import pytest
 
@@ -296,3 +296,126 @@ def test_link_kth_from_end_negative():
     #Assert
     with pytest.raises(Exception):
         assert ll.kth_from_end(-1)
+
+
+def test_linked_list_zip():
+    #Arrange
+    list1 = LinkedList()
+    list1.insert("123")
+    list1.append("456")
+    list1.append("789")
+    list2 = LinkedList()
+    list2.insert("ABC")
+    list2.append("DEF")
+    list2.append("GHI")
+
+    expected = "{'123'} -> {'ABC'} -> {'456'} -> {'DEF'} -> {'789'} -> {'GHI'} -> NULL"
+
+    #Act
+    actual = str(linked_list_zip(list1, list2))
+
+    #Assert
+    assert actual == expected
+
+
+def test_linked_list_zip_list1_longer():
+    #Arrange
+    list1 = LinkedList()
+    list1.insert("123")
+    list1.append("456")
+    list1.append("789")
+    list1.append("101112")
+    list1.append("131415")
+    list2 = LinkedList()
+    list2.insert("ABC")
+    list2.append("DEF")
+    list2.append("GHI")
+
+    expected = "{'123'} -> {'ABC'} -> {'456'} -> {'DEF'} -> {'789'} -> {'GHI'} -> {'101112'} -> {'131415'} -> NULL"
+
+    #Act
+    actual = str(linked_list_zip(list1, list2))
+
+    #Assert
+    assert actual == expected
+
+
+def test_linked_list_zip_list2_longer():
+    #Arrange
+    list1 = LinkedList()
+    list1.insert("123")
+    list1.append("456")
+    list1.append("789")
+
+    list2 = LinkedList()
+    list2.insert("ABC")
+    list2.append("DEF")
+    list2.append("GHI")
+    list2.append("JKL")
+    list2.append("MNO")
+
+    expected = "{'123'} -> {'ABC'} -> {'456'} -> {'DEF'} -> {'789'} -> {'GHI'} -> {'JKL'} -> {'MNO'} -> NULL"
+
+    #Act
+    actual = str(linked_list_zip(list1, list2))
+
+    #Assert
+    assert actual == expected
+
+
+def test_linked_list_zip_list1_1():
+    #Arrange
+    list1 = LinkedList()
+    list1.insert("123")
+
+    list2 = LinkedList()
+    list2.insert("ABC")
+    list2.append("DEF")
+    list2.append("GHI")
+
+    expected = "{'123'} -> {'ABC'} -> {'DEF'} -> {'GHI'} -> NULL"
+
+    #Act
+    actual = str(linked_list_zip(list1, list2))
+
+    #Assert
+    assert actual == expected
+
+
+def test_linked_list_zip_list2_1():
+    #Arrange
+    list1 = LinkedList()
+    list1.insert("123")
+    list1.append("456")
+    list1.append("789")
+
+    list2 = LinkedList()
+    list2.insert("ABC")
+
+    expected = "{'123'} -> {'ABC'} -> {'456'} -> {'789'} -> NULL"
+
+    #Act
+    actual = str(linked_list_zip(list1, list2))
+
+    #Assert
+    assert actual == expected
+
+
+def test_linked_list_zip_reverse_order():
+    #Arrange
+    list1 = LinkedList()
+    list1.insert("123")
+    list1.append("456")
+    list1.append("789")
+    list2 = LinkedList()
+    list2.insert("ABC")
+    list2.append("DEF")
+    list2.append("GHI")
+
+    expected = "{'ABC'} -> {'123'} -> {'DEF'} -> {'456'} -> {'GHI'} -> {'789'} -> NULL"
+
+    #Act
+    actual = str(linked_list_zip(list2, list1))
+
+    #Assert
+    assert actual == expected

@@ -1,4 +1,4 @@
-# Singly Linked List - Linked-List-Insertions
+# Singly Linked List - linked-list-insertions - linked-list-kth -  linked-list-zip
 
 - This Module provides means to create Nodes and Linked Lists and modify them to some extent.
 
@@ -23,6 +23,10 @@
 
 ![linked-list-kth.png](assets/linked-list-kth.png)
 
+- linked-list-zip
+
+![linked-list-zip.png](assets/linked-list-zip.png)
+
 
 <br>
 
@@ -33,6 +37,7 @@
 - O time complexity for (append) method: O(n)
 - O time complexity for (insert_before and insert_after) methods: O(n)
 - O time complexity for (kth_from_end): O(n)
+- O time complexity for (linked-list-zip): O(n)
 
 <br>
 
@@ -100,6 +105,15 @@
 
         Return: Node Value
 
+- linked_list_zip()
+        Returns the two linked lists together into one so that the nodes alternate between the two lists and return a reference to the head of the zipped list.
+
+        Arguments:
+        list1: LinkedList
+        list2: LinkedList
+
+        Return: LinkedList
+
 <br>
 
 ## Testing Goals
@@ -128,3 +142,10 @@
 - [x] Where k is not a positive integer
 - [x] Where the linked list is of a size 1
 - [x] “Happy Path” where k is not at the end, but somewhere in the middle of the linked list
+
+--------------------------------------------------------------------------------------------
+
+- [x] Linked Lists have the same length.
+- [x] One Linked List is longer than the other.
+- [x] Linked List has only one Node.
+- [x] Reversing their order returns the right zipped Linked List.
