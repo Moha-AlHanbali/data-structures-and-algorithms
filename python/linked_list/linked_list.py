@@ -50,7 +50,6 @@ class LinkedList:
         self.current = self.head
 
         while self.current:
-            print("FLAG", self.current.value)
             if self.current.value == value:
                 return True
             self.current = self.current.next
@@ -71,7 +70,6 @@ class LinkedList:
         output = ""
 
         while self.current:
-            print("PRINT", self.current.value)
             output = output + (f"{ {self.current.value} } -> ")
             self.current = self.current.next
         output = output + "NULL"
@@ -169,22 +167,36 @@ class LinkedList:
             counter += 1
 
 
-# if __name__ == "__main__":
-#     ll = LinkedList()
-#     print(ll.insert("ABC"))
-#     print(ll.head.value)
-#     print(ll.insert("EFG"))
-#     print(ll.head.value)
-#     print(ll.insert("HIJ"))
-#     print(ll.head.value)
-#     print(ll.insert(123))
-#     print(ll.head.value)
-#     print(ll.includes("ABE"))
-#     print(str(ll))
-#     print(ll.append("last_item"))
-#     print(str(ll))
-#     print(ll.insert_before("EFG", "insert_before"))
-#     print(str(ll))
-#     print(ll.insert_after("EFG", "insert_after"))
-#     print(str(ll))
-#     print(ll.kth_from_end(8))
+def linked_list_zip(list1:LinkedList, list2:LinkedList):
+    """
+    Returns the two linked lists together into one so that the nodes alternate between the two lists and return a reference to the head of the zipped list.
+
+    Arguments:
+    list1: LinkedList
+    list2: LinkedList
+
+    Return: LinkedList
+    """
+    new_list = LinkedList()
+    list1.current = list1.head
+    list2.current = list2.head
+
+    while list1.current or list2.current:
+        if list1.current == list1.head:
+            new_list.insert(list1.current.value)
+            list1.current = list1.current.next
+            new_list.append(list2.current.value)
+            list2.current = list2.current.next
+
+        if list1.current:
+            new_list.append(list1.current.value)
+            list1.current = list1.current.next
+
+        if list2.current:
+            new_list.append(list2.current.value)
+            list2.current = list2.current.next
+
+    return new_list
+
+
+
