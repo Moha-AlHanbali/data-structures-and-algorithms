@@ -199,4 +199,86 @@ def linked_list_zip(list1:LinkedList, list2:LinkedList):
     return new_list
 
 
+def reverse_list(list:LinkedList):
+    temp = list.head
+    current = temp.next
+    list.head.next = None
+    while current.next:
+        current.next = list.head
+        list.head = current
+        list.head.next = None
+        current = temp.next
+        # temp = temp.next
+    print (list)
+    return (list)
+
+
+def linked_list_palindrome(list:LinkedList):
+    """
+    Checks if the linked list is a palindrome(a word, phrase, number, or sequence of nodes which reads the same backward as forward).
+
+    Arguments:
+    list: LinkedList
+
+    Return: Boolean
+    """
+    regular_list = []
+    is_palindrome = False
+
+    while list.current:
+        regular_list += [list.current.value]
+        list.current = list.current.next
+
+    median = (len(regular_list)) // 2
+
+    for i in range(median + 1):
+
+        print(regular_list[i], regular_list[-1-i])
+
+        if regular_list[i] == regular_list[-1 - i]:
+            is_palindrome = True
+        else:
+            is_palindrome = False
+            break
+
+    print(regular_list)
+    print(is_palindrome)
+    return is_palindrome
+
+
+
+
+if __name__ == '__main__':
+    # ll = LinkedList()
+    # ll.insert(1)
+    # ll.insert(2)
+    # ll.insert(3)
+    # ll.insert(4)
+    # ll.insert(5)
+    # ll.insert(4)
+    # ll.insert(3)
+    # ll.insert(2)
+    # ll.insert(1)
+    # linked_list_palindrome(ll)
+
+    # ll2 = LinkedList()
+    # ll2.insert(1)
+    # ll2.insert(2)
+    # ll2.insert(3)
+    # ll2.insert(4)
+    # ll2.insert(5)
+    # ll2.insert(4)
+    # ll2.insert(3)
+    # ll2.insert(5)
+    # ll2.insert(1)
+    # linked_list_palindrome(ll2)
+
+    ll3 = LinkedList()
+    ll3.insert(5)
+    ll3.insert(4)
+    ll3.insert(3)
+    ll3.insert(2)
+    ll3.insert(1)
+    print(ll3)
+    reverse_list(ll3)
 
