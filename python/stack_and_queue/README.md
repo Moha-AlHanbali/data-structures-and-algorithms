@@ -13,7 +13,9 @@
 
 ## Whiteboard Process
 
-- ~
+- stack-queue-pseudo
+
+![stack-queue-pseudo.png](assets/stack-queue-pseudo.png)
 
 <br>
 
