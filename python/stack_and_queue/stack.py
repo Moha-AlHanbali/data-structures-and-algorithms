@@ -1,4 +1,6 @@
 from stack_and_queue.node import Node
+# from node import Node
+
 
 class Stack():
     """
