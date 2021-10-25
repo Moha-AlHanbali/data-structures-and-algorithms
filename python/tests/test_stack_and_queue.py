@@ -1,6 +1,7 @@
 from stack_and_queue.node import Node
 from stack_and_queue.stack import Stack
 from stack_and_queue.queue import Queue
+from stack_and_queue.pseudo_queue import PseudoQueue
 import pytest
 
 
@@ -199,6 +200,74 @@ def test_queue_dequeue_empty(new_queue_0):
         assert new_queue_0.dequeue()
 
 
+
+
+
+
+# Pseudo Queue Tests
+# -------------------------------------------------------------------
+
+
+def test_pseudo_queue_enqueue_value(new_pseudo_queue_1):
+     # Arrange
+    expected = "Test_Value_1"
+
+    # Act
+    actual = new_pseudo_queue_1.front.value
+
+    # Assert
+    assert actual == expected
+
+
+def test_pseudo_queue_enqueue_multiple(new_pseudo_queue_5):
+     # Arrange
+    expected_1 = "Test_Value_1"
+    expected_2 = "Test_Value_2"
+
+    # Act
+    actual_1 = new_pseudo_queue_5.front.value
+    actual_2 = new_pseudo_queue_5.front.next.value
+
+    # Assert
+    assert actual_1 == expected_1
+    assert expected_2 == actual_2
+
+
+def test_pseudo_queue_dequeue_value(new_pseudo_queue_5):
+     # Arrange
+    expected = "Test_Value_1"
+
+    # Act
+    actual = new_pseudo_queue_5.dequeue()
+
+    # Assert
+    assert actual == expected
+
+
+def test_pseudo_queue_dequeue_multiple(new_pseudo_queue_5):
+     # Arrange
+    expected = True
+
+    # Act
+    new_pseudo_queue_5.dequeue()
+    new_pseudo_queue_5.dequeue()
+    new_pseudo_queue_5.dequeue()
+    new_pseudo_queue_5.dequeue()
+    new_pseudo_queue_5.dequeue()
+
+    # Assert
+    with pytest.raises(Exception):
+        assert new_pseudo_queue_5.dequeue()
+
+
+def test_pseudo_queue_dequeue_empty(new_pseudo_queue_0):
+    # Assert
+    with pytest.raises(Exception):
+        assert new_pseudo_queue_0.dequeue()
+
+
+
+
 # Fixtures
 # -------------------------------------------------------------------
 @pytest.fixture
@@ -245,4 +314,23 @@ def new_queue_5():
     return queue
 
 
+@pytest.fixture
+def new_pseudo_queue_0():
+    pseudo = PseudoQueue()
+    return pseudo
 
+@pytest.fixture
+def new_pseudo_queue_1():
+    pseudo = PseudoQueue()
+    pseudo.enqueue("Test_Value_1")
+    return pseudo
+
+@pytest.fixture
+def new_pseudo_queue_5():
+    pseudo = PseudoQueue()
+    pseudo.enqueue("Test_Value_1")
+    pseudo.enqueue("Test_Value_2")
+    pseudo.enqueue("Test_Value_3")
+    pseudo.enqueue("Test_Value_4")
+    pseudo.enqueue("Test_Value_5")
+    return pseudo

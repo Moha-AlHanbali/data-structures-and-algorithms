@@ -1,4 +1,7 @@
 from stack_and_queue.node  import Node
+# from node  import Node
+
+
 
 class Queue():
      """
@@ -72,3 +75,8 @@ class Queue():
             return True
         else:
             return False
+
+
+
+
+

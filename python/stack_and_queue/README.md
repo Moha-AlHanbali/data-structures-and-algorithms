@@ -1,4 +1,4 @@
-# Stack and Queue
+# Stack and Queue - stack-queue-pseudo
 
 - This Module provides means to create Stacks and Queues and modify them to some extent.
 
@@ -13,7 +13,9 @@
 
 ## Whiteboard Process
 
-- ~
+- stack-queue-pseudo
+
+![stack-queue-pseudo.png](assets/stack-queue-pseudo.png)
 
 <br>
 
@@ -28,6 +30,9 @@
 - O complexity for (Queue.dequeue) method: O(1)
 - O complexity for (Queue.peek) method: O(1)
 - O complexity for (Queue.is_empty) method: O(1)
+
+- O complexity for (PseudoQueue.queue) method: O(n)
+- O complexity for (PseudoQueue.dequeue) method: O(n)
 
 <br>
 
@@ -96,6 +101,21 @@
 
         Return : Boolean
 
+- PseudoQueue.queue()
+
+     Queue class creates a Pseudo Queue instances.
+
+     Arguments:
+     front: Node
+     back: Node
+
+- PseudoQueue.dequeue()
+
+        This method Inserts value into the PseudoQueue, using a first-in, first-out approach..
+
+        Arguments:
+        value: any
+
 <br>
 
 ## Testing Goals
@@ -114,3 +134,11 @@
 - [x] Can successfully empty a queue after multiple dequeues
 - [x] Can successfully instantiate an empty queue
 - [x] Calling dequeue or peek on empty queue raises exception
+
+---------------------------------------------------------------------------
+
+- [x] Can successfully enqueue into a pseudo_queue
+- [x] Can successfully enqueue multiple values into a pseudo_queue
+- [x] Can successfully dequeue out of a pseudo_queue the expected value
+- [x] Can successfully empty a pseudo_queue after multiple dequeues
+- [x] Can successfully instantiate an empty pseudo_queue
