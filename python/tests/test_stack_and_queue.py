@@ -2,6 +2,7 @@ from stack_and_queue.node import Node
 from stack_and_queue.stack import Stack
 from stack_and_queue.queue import Queue
 from stack_and_queue.pseudo_queue import PseudoQueue
+from stack_and_queue.animal_shelter import AnimalShelter, Animal, Cat, Dog, Mouse, Horse
 import pytest
 
 
@@ -268,6 +269,138 @@ def test_pseudo_queue_dequeue_empty(new_pseudo_queue_0):
 
 
 
+
+
+# Animal Shelter Tests
+# -------------------------------------------------------------------
+
+
+def test_shelter_enqueue_value(animal_queue):
+     # Arrange
+    expected = "bog"
+
+    # Act
+    actual = animal_queue.front.value.name
+
+    # Assert
+    assert actual == expected
+
+def test_shelter_enqueue_wrong_value(mouse, animal_queue):
+     # Arrange
+    expected = False
+
+    # Act
+    actual = animal_queue.enqueue(mouse)
+
+    # Assert
+    assert actual == expected
+
+
+def test_shelter_enqueue_multiple(animal_queue):
+     # Arrange
+    expected_1 = "bog"
+    expected_2 = "sog"
+
+    # Act
+    actual_1 = animal_queue.front.value.name
+    actual_2 = animal_queue.front.next.value.name
+
+    # Assert
+    assert actual_1 == expected_1
+    assert expected_2 == actual_2
+
+def test_shelter_dequeue_invalid(horse, animal_queue):
+     # Arrange
+    expected = None
+
+    # Act
+    actual = animal_queue.dequeue(horse)
+
+    # Assert
+    assert actual == expected
+
+
+def test_shelter_dequeue_first_value(animal_queue):
+     # Arrange
+    expected = "bog"
+
+    # Act
+    actual = animal_queue.dequeue("dog")
+
+    # Assert
+    assert actual == expected
+
+def test_shelter_dequeue_two_values(animal_queue):
+     # Arrange
+    expected_1 = "bog"
+    expected_2 = "sog"
+
+    # Act
+    actual_1 = animal_queue.dequeue("dog")
+    actual_2 = animal_queue.dequeue("dog")
+
+    # Assert
+    assert actual_1 == expected_1
+    assert actual_2 == expected_2
+
+def test_shelter_dequeue_different_value(animal_queue):
+     # Arrange
+    expected_1 = "mat"
+    expected_2 = "bog"
+
+    # Act
+    actual_1 = animal_queue.dequeue("cat")
+    actual_2 = animal_queue.front.value.name
+
+    # Assert
+    assert actual_1 == expected_1
+    assert actual_2 == expected_2
+
+
+def test_shelter_dequeue_alternating_values(animal_queue):
+     # Arrange
+    expected_1 = "mat"
+    expected_2 = "bog"
+    expected_3 = "pat"
+    expected_4 = "sog"
+    expected_5 = "log"
+
+    # Act
+    actual_1 = animal_queue.dequeue("cat")
+    actual_2 = animal_queue.dequeue("dog")
+    actual_3 = animal_queue.dequeue("cat")
+    actual_4 = animal_queue.dequeue("dog")
+    actual_5 = animal_queue.front.value.name
+
+
+    # Assert
+    assert actual_1 == expected_1
+    assert actual_2 == expected_2
+    assert actual_3 == expected_3
+    assert actual_4 == expected_4
+    assert actual_5 == expected_5
+
+
+def test_shelter_dequeue_empties_shelter(animal_queue):
+    # Act
+    animal_queue.dequeue("dog")
+    animal_queue.dequeue("dog")
+    animal_queue.dequeue("dog")
+    animal_queue.dequeue("dog")
+    animal_queue.dequeue("cat")
+    animal_queue.dequeue("cat")
+    animal_queue.dequeue("cat")
+    animal_queue.dequeue("cat")
+
+    # Assert
+    with pytest.raises(Exception):
+        assert new_pseudo_queue_5.dequeue()
+
+
+
+
+
+
 # Fixtures
 # -------------------------------------------------------------------
 @pytest.fixture
@@ -334,3 +467,50 @@ def new_pseudo_queue_5():
     pseudo.enqueue("Test_Value_4")
     pseudo.enqueue("Test_Value_5")
     return pseudo
+
+
+@pytest.fixture
+def dog():
+    dog = Dog("dog")
+    return dog
+
+@pytest.fixture
+def cat():
+    cat = Cat("cat")
+    return cat
+
+@pytest.fixture
+def mouse():
+    mouse = Mouse("mouse")
+    return mouse
+
+@pytest.fixture
+def horse():
+    horse = Horse("horse")
+    return horse
+
+@pytest.fixture
+def animal_queue():
+    shelter = AnimalShelter()
+
+    bog = Dog("bog")
+    sog = Dog("sog")
+    log = Dog("log")
+    hog = Dog("hog")
+
+    mat = Cat("mat")
+    pat = Cat("pat")
+    fat = Cat("fat")
+    nat = Cat("nat")
+
+    shelter.enqueue(bog)
+    shelter.enqueue(sog)
+    shelter.enqueue(log)
+    shelter.enqueue(hog)
+
+    shelter.enqueue(mat)
+    shelter.enqueue(pat)
+    shelter.enqueue(fat)
+    shelter.enqueue(nat)
+
+    return shelter

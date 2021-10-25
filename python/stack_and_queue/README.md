@@ -1,4 +1,4 @@
-# Stack and Queue - stack-queue-pseudo
+# Stack and Queue - stack-queue-pseudo - stack-queue-animal-shelter
 
 - This Module provides means to create Stacks and Queues and modify them to some extent.
 
@@ -19,6 +19,12 @@
 
 <br>
 
+- stack-queue-animal-shelter
+
+![stack-queue-animal-shelter.png](assets/stack-queue-animal-shelter.png)
+
+<br>
+
 ## Approach & Efficiency
 
 - O complexity for (Stack.push) method: O(1)
@@ -33,6 +39,9 @@
 
 - O complexity for (PseudoQueue.queue) method: O(n)
 - O complexity for (PseudoQueue.dequeue) method: O(n)
+
+- O complexity for (AnimalShelter.queue) method: O(1)
+- O complexity for (AnimalShelter.dequeue) method: O(n)
 
 <br>
 
@@ -116,9 +125,27 @@
         Arguments:
         value: any
 
+- AnimalShelter.queue()
+
+        This method adds a Cat/Dog object to the AnimalShelter queue.
+
+        Arguments:
+        animal: Cat or Dog object
+
+- AnimalShelter.dequeue()
+
+        This method removes a Cat/Dog object to the AnimalShelter queue.
+
+        Arguments:
+        pref : Cat or Dog object
+
+        Return: Dequeued object / None
+
 <br>
 
 ## Testing Goals
+
+- Stack and Queue
 
 - [x] Can successfully push onto a stack
 - [x] Can successfully push multiple values onto a stack
@@ -137,8 +164,22 @@
 
 ---------------------------------------------------------------------------
 
+- stack-queue-pseudo
+
 - [x] Can successfully enqueue into a pseudo_queue
 - [x] Can successfully enqueue multiple values into a pseudo_queue
 - [x] Can successfully dequeue out of a pseudo_queue the expected value
 - [x] Can successfully empty a pseudo_queue after multiple dequeues
 - [x] Can successfully instantiate an empty pseudo_queue
+
+---------------------------------------------------------------------------
+
+- stack-queue-animal-shelter
+
+- [x] Can successfully enqueue into a shelter
+- [x] Can successfully enqueue multiple values into a shelter
+- [x] Can successfully dequeue out of a shelter the expected value
+- [x] Can successfully dequeue out of a shelter the multiple expected values
+- [x] Can successfully empty a shelter after multiple dequeues
+- [x] Can successfully instantiate an empty shelter
+- [x] Can successfully detect invalid inputs
