@@ -30,4 +30,4 @@ To run your tests
 
 - [Singly Linked List - linked-list-insertions - linked-list-kth - linked-list-zip](./python/linked_list/README.md)
 
-- [Stack and Queue - stack-queue-pseudo - stack-queue-animal-shelter](./python/stack_and_queue/README.md)
+- [Stack and Queue - stack-queue-pseudo - stack-queue-animal-shelter - stack-queue-brackets](./python/stack_and_queue/README.md)
