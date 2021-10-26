@@ -211,4 +211,4 @@
 
 - [x] Can successfully detect unbalanced brackets
 - [x] Can successfully detect balanced brackets
-- [ ] Can successfully detect programmatically unbalanced brackets
+- [x] Can successfully detect programmatically unbalanced brackets

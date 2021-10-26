@@ -496,13 +496,52 @@ def test_validate_brackets_case_8():
     assert actual == expected
 
 
-@pytest.mark.skip("fails last test, needs further work")
 def test_validate_brackets_case_9():
     #Arrange
     expected = False
 
     #Act
     actual = validate_brackets("{(})")
+
+    #Assert
+    assert actual == expected
+
+def test_validate_brackets_case_10():
+    #Arrange
+    expected = True
+
+    #Act
+    actual = validate_brackets("(([{[()]}]))")
+
+    #Assert
+    assert actual == expected
+
+def test_validate_brackets_case_11():
+    #Arrange
+    expected = True
+
+    #Act
+    actual = validate_brackets("(([{[)(]}]))")
+
+    #Assert
+    assert actual == expected
+
+def test_validate_brackets_case_12():
+    #Arrange
+    expected = False
+
+    #Act
+    actual = validate_brackets("(([{)[(]}]))")
+
+    #Assert
+    assert actual == expected
+
+def test_validate_brackets_case_13():
+    #Arrange
+    expected = False
+
+    #Act
+    actual = validate_brackets("(([{)[(]}]})")
 
     #Assert
     assert actual == expected

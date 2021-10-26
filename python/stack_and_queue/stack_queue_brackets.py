@@ -4,6 +4,7 @@ from stack_and_queue.stack  import Stack
 # from queue  import Queue
 # from stack  import Stack
 
+
 def validate_brackets(string):
     """
     Representing whether or not the brackets in the string are balanced.
@@ -29,98 +30,78 @@ def validate_brackets(string):
     "curly_bracket_close" : "}"
     }
 
-    string_queue= Queue()
+    string_queue = Queue()
+    queue_counter = 0
+    string_stack = Stack()
+    stack_counter = 0
+
+    alternate = True
+    validation = True
+
     for char in string:
-        if char in brackets.values():
+        if (char in brackets.values()) and (alternate == True):
             string_queue.enqueue(char)
+            alternate = False
+            queue_counter += 1
+            continue
 
-    if string_queue.front:
-        seek_mode = True
-    else:
-        seek_mode = False
+        if (char in brackets.values()) and (alternate == False):
+            string_stack.push(char)
+            alternate = True
+            stack_counter += 1
+            continue
 
-    while string_queue.front:
-        current = string_queue.front
+    if not queue_counter == stack_counter:
+        validation = False
+        print(validation)
+        return validation
 
-        if current.value == brackets["round_bracket_open"]:
+    queue_node = string_queue.front
+    stack_node = string_stack.top
+
+
+    while queue_node:
+
+        validation = False
+
+        if queue_node.value == brackets["round_bracket_open"]:
             expected_value = brackets["round_bracket_close"]
 
-        elif current.value == brackets["square_bracket_open"]:
+        elif queue_node.value == brackets["square_bracket_open"]:
             expected_value = brackets["square_bracket_close"]
 
-        elif current.value == brackets["curly_bracket_open"]:
+        elif queue_node.value == brackets["curly_bracket_open"]:
             expected_value = brackets["curly_bracket_close"]
-        else:
-            seek_mode = True
-            print(not seek_mode)
-            return not seek_mode
 
-        seek_mode = True
-        string_queue.dequeue()
-        current = string_queue.front
-        filter_stack = Stack()
-        helper_stack = Stack()
+        elif queue_node.value == brackets["round_bracket_close"]:
+            expected_value = brackets["round_bracket_open"]
 
+        elif queue_node.value == brackets["square_bracket_close"]:
+            expected_value = brackets["square_bracket_open"]
 
-        while current:
-
-            filter_stack.push(current.value)
-            string_queue.dequeue()
-
-
-            if current.value == expected_value:
-                filter_stack.pop()
-                seek_mode = False
-                expected_value = None
-
-            current = string_queue.front
-
-        if seek_mode == True:
-            print (not seek_mode)
-            return not seek_mode
-
-        while filter_stack.top:
-            current = filter_stack.top
-            helper_stack.push(current.value)
-            filter_stack.pop()
-            current = current.next
-
-        if helper_stack.top:
-            current = helper_stack.top
-
-        if current:
-            current = helper_stack.top
-            if current.value == brackets["round_bracket_open"]:
-                expected_value = brackets["round_bracket_close"]
-
-            elif current.value == brackets["square_bracket_open"]:
-                expected_value = brackets["square_bracket_close"]
-
-            elif current.value == brackets["curly_bracket_open"]:
-                expected_value = brackets["curly_bracket_close"]
-            else:
-                seek_mode = True
-                print(not seek_mode)
-                return not seek_mode
-
-
-            seek_mode = True
-            string_queue = Queue()
-            while current:
-                helper_stack.pop()
-                string_queue.enqueue(current.value)
-                current = helper_stack.top
-
-
-    print(not seek_mode)
-    return not seek_mode
+        elif queue_node.value == brackets["curly_bracket_close"]:
+            expected_value = brackets["curly_bracket_open"]
 
 
 
+        stack_node = string_stack.top
+
+        while stack_node:
+            print("passing", queue_node.value, stack_node.value, expected_value)
+            if stack_node.value == expected_value:
+                print("REAL", queue_node.value, stack_node.value, expected_value)
+                stack_node.value = ""
+                validation = True
+
+                break
+
+            stack_node = stack_node.next
 
 
+        queue_node = queue_node.next
 
-
+    print(validation)
+    return validation
 
 
 # if __name__ == "__main__":
@@ -134,3 +115,4 @@ def validate_brackets(string):
     # validate_brackets("[({}]")
     # validate_brackets("(](")
     # validate_brackets("{}(){}")
+    # validate_brackets("{(})")
