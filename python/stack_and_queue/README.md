@@ -1,4 +1,4 @@
-# Stack and Queue - stack-queue-pseudo - stack-queue-animal-shelter
+# Stack and Queue - stack-queue-pseudo - stack-queue-animal-shelter - stack-queue-brackets
 
 - This Module provides means to create Stacks and Queues and modify them to some extent.
 
@@ -25,6 +25,12 @@
 
 <br>
 
+- stack
+
+![stack-queue-brackets.png](assets/stack-queue-brackets.png)
+
+<br>
+
 ## Approach & Efficiency
 
 - O complexity for (Stack.push) method: O(1)
@@ -42,6 +48,8 @@
 
 - O complexity for (AnimalShelter.queue) method: O(1)
 - O complexity for (AnimalShelter.dequeue) method: O(n)
+
+- O complexity for (validate_brackets) function: O(n^2)
 
 <br>
 
@@ -141,6 +149,19 @@
 
         Return: Dequeued object / None
 
+- validate_brackets()
+
+    Representing whether or not the brackets in the string are balanced.
+
+    Round Brackets : ()
+    Square Brackets : []
+    Curly Brackets : {}
+
+    Arguments:
+    string: string
+
+    Return: boolean
+
 <br>
 
 ## Testing Goals
@@ -183,3 +204,11 @@
 - [x] Can successfully empty a shelter after multiple dequeues
 - [x] Can successfully instantiate an empty shelter
 - [x] Can successfully detect invalid inputs
+
+---------------------------------------------------------------------------
+
+- validate_brackets
+
+- [x] Can successfully detect unbalanced brackets
+- [x] Can successfully detect balanced brackets
+- [x] Can successfully detect programmatically unbalanced brackets

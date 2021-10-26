@@ -1,5 +1,4 @@
 from stack_and_queue.node  import Node
-# from node  import Node
 
 
 class Animal:
@@ -152,31 +151,5 @@ class AnimalShelter:
 
 
 
-if __name__ == '__main__':
-    shelter = AnimalShelter()
-    dog = Dog("dog")
-    cat = Cat("cat")
-    mouse = Mouse("mouse")
-    mat = Cat("mat")
-    pat = Cat("pat")
-    bog = Dog("bog")
-    sog = Dog("sog")
-
-    shelter.enqueue(mat)
-    shelter.enqueue(dog)
-    shelter.enqueue(bog)
-    shelter.enqueue(sog)
-    shelter.enqueue(cat)
-    shelter.enqueue(pat)
-
-    print("before", shelter.front.value.name)
-    print("before", (shelter.front.next).value.name)
-    print("before", (shelter.front.next).next.value.name)
-
-    shelter.dequeue("dog")
-
-    print("after", (shelter.front.value.name))
-    print("after", (shelter.front.next).value.name)
-    print("after", (shelter.front.next).next.value.name)
 
 
