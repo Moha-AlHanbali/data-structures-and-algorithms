@@ -1,6 +1,6 @@
 class Node():
     """
-    Node class creates Linked Lists instances.
+    Node class creates Node instances.
 
     Arguments:
     value: any
