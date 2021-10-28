@@ -78,5 +78,69 @@ class Queue():
 
 
 
+def duck_duck_goose(list, k):
+
+    counter=  1
+    game_queue = Queue()
 
 
+    for name in list:
+        if counter== k:
+            counter = 1
+            continue
+        else:
+            counter += 1
+            game_queue.enqueue(name)
+    current = game_queue.front
+    previous = current
+    next_node = current
+
+    while current and game_queue.front != game_queue.back:
+
+
+        if counter == k:
+            if current == game_queue.front:
+                    game_queue.dequeue()
+                    counter = 1
+                    current = game_queue.front
+                    previous = game_queue.front
+                    continue
+
+            if previous.next == game_queue.back:
+                    previous.next = None
+                    game_queue.back = previous
+                    current = game_queue.front
+                    previous = game_queue.front
+                    counter = 1
+                    continue
+
+            else:
+                previous.next = current.next
+                next_node = current.next
+                current.next = None
+                current.next = next_node
+                current = next_node
+                counter = 1
+                continue
+        else:
+            if current.next:
+                previous  = current
+                current = current.next
+            else:
+                current = game_queue.front
+            counter += 1
+
+    return game_queue.front.value
+
+# if __name__ == "__main__":
+#     names = ["A", "B", "C", "D", "E"]
+#     names2 = ["A", "B", "C", "D", "E", "F", "G"]
+#     names3 = ["A", "B", "C", "D", "E"]
+#     names4 = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"]
+#     names5 = ["A", "B", "C", "D", "E", "F", "G", "H", "I"]
+
+#     # duck_duck_goose(names, 3)
+#     # duck_duck_goose(names2, 5)
+#     # duck_duck_goose(names3, 2)
+#     # duck_duck_goose(names4, 3)
+#     duck_duck_goose(names5, 7)

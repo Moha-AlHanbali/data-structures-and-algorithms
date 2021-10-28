@@ -25,7 +25,7 @@
 
 <br>
 
-- stack
+- stack_queue_brackets
 
 ![stack-queue-brackets.png](assets/stack-queue-brackets.png)
 
