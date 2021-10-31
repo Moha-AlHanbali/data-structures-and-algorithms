@@ -100,6 +100,9 @@ def test_tree_exceptions(tree):
         assert tree.post_order()
 
 
+# Binary Search Trees Tests
+# -------------------------------------------------------------------
+
 def test_bs_tree_add(bs_tree):
     #Arrange
 
@@ -172,6 +175,61 @@ def test_bs_add_empty():
     assert actual == expected
 
 
+
+# Find Maximum Value Tests
+# -------------------------------------------------------------------
+
+def test_find_maximum_value_empty():
+    #Arrange
+    tree = BinaryTree()
+
+    #Assert
+    with pytest.raises(Exception):
+        assert tree.post_order()
+
+def test_find_maximum_value_none_numbers(tree):
+    #Arrange
+    expected = 6
+
+    #Act
+    actual = tree.find_maximum_value()
+
+    #Assert
+    assert actual == expected
+
+
+def test_find_maximum_value_none_numbers(mixed_tree):
+    #Arrange
+    expected = 10
+
+    #Act
+    actual = mixed_tree.find_maximum_value()
+
+    #Assert
+    assert actual == expected
+
+def test_find_maximum_value_bst(bs_tree):
+    #Arrange
+    expected = 80
+
+    #Act
+    actual = bs_tree.find_maximum_value()
+
+    #Assert
+    assert actual == expected
+
+def test_find_maximum_value_bst_added_value(bs_tree):
+    #Arrange
+    expected = 100
+    bs_tree.add(100)
+
+    #Act
+    actual = bs_tree.find_maximum_value()
+
+    #Assert
+    assert actual == expected
+
+
 # Fixtures
 # -------------------------------------------------------------------
 @pytest.fixture
@@ -193,6 +251,35 @@ def tree():
     tree.root = node
 
     return tree
+
+
+@pytest.fixture
+def mixed_tree():
+    node = Node(1)
+    node2 = Node(2)
+    node3 = Node(3)
+    node4 = Node(4)
+    node5 = Node(5)
+    node6 = Node(6)
+    node10 = Node(10)
+    nodea = Node("a")
+    nodeb = Node("b")
+
+
+    nodea.left = node
+    nodea.right = nodeb
+    nodeb.right = node10
+    node.left = node2
+    node.right = node3
+    node3.left = node4
+    node3.right = node5
+    node5.left = node6
+
+    mixed_tree = BinaryTree()
+    mixed_tree.root = nodea
+
+    return mixed_tree
+
 
 @pytest.fixture
 def bs_tree():

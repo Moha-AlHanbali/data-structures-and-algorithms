@@ -1,4 +1,4 @@
-# Binary Tree and BST Implementation
+# Binary Tree and BST Implementation - tree-max
 
 - This Module provides means to create Trees Data Structure and modify them to some extent.
 
@@ -13,7 +13,9 @@
 
 ## Whiteboard Process
 
--
+- tree-max
+
+![assets/tree-max.png](assets/tree-max.png)
 
 <br>
 
@@ -26,6 +28,8 @@
 - O complexity for (BinarySearchTree.search) method: O(log(n))
 - O complexity for (BinarySearchTree.add) method: O(log(n))
 - O complexity for (BinarySearchTree.contain) method: O(log(n))
+
+- O complexity for (BinaryTree.find_maximum_value) method: O(log(n))
 
 <br>
 
@@ -82,6 +86,14 @@
 
         Return :Boolean
 
+- BinaryTree.find_maximum_value()
+
+        find_maximum_value method traverses the binary tree in search for the maximum number its' nodes contain.
+
+        Arguments: None
+
+        Return: Number
+
 <br>
 
 ## Testing Goals
@@ -104,3 +116,11 @@
 - [x] Can successfully add a value in its' correct location
 - [x] Can successfully detect if a value is in a tree or not
 - [x] Can successfully detect added values in tree
+
+---------------------------------------------------------------------------
+
+- Find Maximum Value
+
+- [x] Can successfully find and return the max value
+- [x] Can successfully raise exception if tree was empty
+- [x] Can successfully check for values when other data types exist

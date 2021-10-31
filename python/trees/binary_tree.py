@@ -13,6 +13,7 @@ class BinaryTree():
         """
         self.root = root
         self.vlaues = []
+        self.maximum = 0
 
     def pre_order(self):
         """
@@ -118,6 +119,45 @@ class BinaryTree():
         walk(self.root)
         print(self.values)
         return self.values
+
+
+
+    def find_maximum_value(self):
+        """
+        find_maximum_value method traverses the binary tree in search for the maximum number its' nodes contain.
+
+        Arguments: None
+
+        Return: Number
+        """
+
+        def walk(root):
+            """"
+            walk is a helper method for find_maximum_value.
+
+            Arguments:
+            root: Tree Root Node
+            """
+
+            try:
+                if root:
+                    if (type(root.value) == int or type(root.value) == float) and root.value > self.maximum   :
+                        self.maximum = root.value
+
+                if root and root.left:
+                    walk(root.left)
+
+                if root and root.right:
+                    walk(root.right)
+
+
+            except:
+                raise Exception("Tree seems to be empty. Check your data and try again.")
+
+
+        walk(self.root)
+        print(self.maximum)
+        return self.maximum
 
 
 
@@ -262,11 +302,13 @@ class BinarySearchTree(BinaryTree):
 # if __name__ == "__main__":
 #     node = Node(1)
 #     node2 = Node(2)
+#     nodea = Node("a")
 #     node3 = Node(3)
 #     node4 = Node(4)
 #     node.left = node2
 #     node.right = node3
 #     node3.left = node4
+#     node3.right = nodea
 
 
 #     node50 = Node(50)
@@ -309,36 +351,12 @@ class BinarySearchTree(BinaryTree):
 #     tree.root = node
 #     bstree.root = node50
 
-#     # bstree.search(65)
-#     # bstree.search(80)
-#     # bstree.search(20)
-#     # bstree.search(10)
-
-
-#     bstree.add(100)
-#     bstree.add(0)
-
-#     # bstree.contain(50)
-#     # bstree.contain(40)
-#     # bstree.contain(60)
-#     # bstree.contain(0)
-
-#     # bstree.contain(80)
-#     bstree.contain(222)
 #     bstree.contain(100)
-#     bstree.contain(0)
-#     print ("HERE")
-#     print (node50.value)
-#     print (node50.right.value)
-#     print (node50.right.right.value)
-#     print (node50.right.right.right.value)
-#     print (node50.right.right.right.right.value)
-#     # ree = BinaryTree()
-#     # ree.post_order()
+#     bstree.add(100)
+#     bstree.contain(100)
 
-#     # tree.pre_order()
-#     # tree.in_order()
-#     # tree.post_order()
+#     tree.find_maximumimum_value()
+#     bstree.find_maximumimum_value()
 
 
 
