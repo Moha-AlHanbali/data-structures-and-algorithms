@@ -1,5 +1,6 @@
 from trees.node import Node
 from trees.binary_tree import BinaryTree, BinarySearchTree
+from trees.tree_breadth_first import breadth_first
 import pytest
 
 
@@ -185,7 +186,7 @@ def test_find_maximum_value_empty():
 
     #Assert
     with pytest.raises(Exception):
-        assert tree.post_order()
+        assert tree.test_find_maximum_value_empty()
 
 def test_find_maximum_value_none_numbers(tree):
     #Arrange
@@ -229,6 +230,52 @@ def test_find_maximum_value_bst_added_value(bs_tree):
     #Assert
     assert actual == expected
 
+
+
+# Breadth First Tests
+# -------------------------------------------------------------------
+
+def test_breadth_first(tree):
+    #Arrange
+    expected = [1, 2, 3, 4, 5, 6]
+
+
+    #Act
+    actual = breadth_first(tree)
+
+    #Assert
+    assert actual == expected
+
+def test_breadth_first_mixed(mixed_tree):
+    #Arrange
+    expected = ["a", 1, "b", 2, 3, 10, 4 ,5 ,6]
+
+
+    #Act
+    actual = breadth_first(mixed_tree)
+
+    #Assert
+    assert actual == expected
+
+def test_breadth_first_bs_tree(bs_tree):
+    #Arrange
+    expected = [50, 40, 60, 30, 45, 55, 70, 20, 35, 65, 80]
+
+
+    #Act
+    actual = breadth_first(bs_tree)
+
+    #Assert
+    assert actual == expected
+
+
+def test_breadth_first_empty():
+    #Arrange
+    tree = BinaryTree()
+
+    #Assert
+    with pytest.raises(Exception):
+        assert test_breadth_first_empty(tree)
 
 # Fixtures
 # -------------------------------------------------------------------
