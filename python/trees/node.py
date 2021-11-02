@@ -1,6 +1,6 @@
 class Node():
     """
-    Node class creates.
+    Node class creates a Node.
 
     Arguments:
     value: any

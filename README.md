@@ -32,4 +32,4 @@ To run your tests
 
 - [Stack and Queue - stack-queue-pseudo - stack-queue-animal-shelter - stack-queue-brackets](./python/stack_and_queue/README.md)
 
-- [Binary Tree and BST Implementation - tree-max - tree-breadth-first](./python/trees/README.md)
+- [Binary Tree and BST Implementation - tree-max - tree-breadth-first - tree-fizz-buzz](./python/trees/README.md)

@@ -1,4 +1,4 @@
-# Binary Tree and BST Implementation - tree-max - tree-breadth-first
+# Binary Tree and BST Implementation - tree-max - tree-breadth-first - tree-fizz-buzz
 
 - This Module provides means to create Trees Data Structure and modify them to some extent.
 
@@ -15,13 +15,19 @@
 
 - tree-max
 
-![assets/tree-max.png](assets/tree-max.png)
+![tree-max.png](assets/tree-max.png)
 
 <br>
 
 - tree-breadth-first
 
-![assets/tree-breadth-first.png](assets/tree-breadth-first.png)
+![tree-breadth-first.png](assets/tree-breadth-first.png)
+
+<br>
+
+- tree-fizz-buzz
+
+![tree-fizz-buzz.png](assets/tree-fizz-buzz.png)
 
 <br>
 
@@ -38,6 +44,9 @@
 - O complexity for (BinaryTree.find_maximum_value) method: O(log(n))
 
 - O complexity for (breadth_first) function: O(log(n))
+
+- O complexity for (KaryTree.traverse_kary_tree) method: O(log(n))
+- O complexity for (fizz_buzz) function: O(log(n))
 
 <br>
 
@@ -111,6 +120,28 @@
 
     Return:  Ordered list of all values in the tree.
 
+- KaryTree.traverse_kary_tree()
+
+        traverse_kary_tree method traverses the K-aryTree in Breadth First Order.
+
+        Arguments: None
+
+        Return: List of Node Values
+
+- fizz_buzz()
+
+    Determines whether or not the value of each node is divisible by 3, 5 or both.
+    Create a new tree with the same structure as the original, but the values modified as follows:
+    If the value is divisible by 3, replace the value with “Fizz”
+    If the value is divisible by 5, replace the value with “Buzz”
+    If the value is divisible by 3 and 5, replace the value with “FizzBuzz”
+    If the value is not divisible by 3 or 5, simply turn the number into a String.
+
+    Arguments:
+    tree: KaryTree
+
+    Return: Modified KaryTree
+
 <br>
 
 ## Testing Goals
@@ -148,4 +179,21 @@
 
 - [x] Can successfully return a collection from a Breadth First traversal
 - [x] Can successfully return values in expected order
+- [x] Can successfully raise exceptions
+
+---------------------------------------------------------------------------
+
+- K-ary Tree
+
+- [x] Can successfully instantiate an empty tree
+- [x] Can successfully instantiate a tree with a single root node
+- [x] Can successfully return a collection from a Breadth First traversal
+- [x] Can successfully raise exceptions
+
+---------------------------------------------------------------------------
+
+- FizzBuzz
+
+- [x] Can successfully return modified values in correct order
+- [x] Can successfully handle none int values
 - [x] Can successfully raise exceptions
