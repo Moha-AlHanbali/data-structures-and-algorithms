@@ -35,3 +35,5 @@ To run your tests
 - [Binary Tree and BST Implementation - tree-max - tree-breadth-first - tree-fizz-buzz](./python/trees/README.md)
 
 - [Insertion Sort](./python/insertion_sort/README.md)
+
+- [Merge Sort](./python/merge_sort/README.md)
