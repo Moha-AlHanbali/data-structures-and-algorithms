@@ -37,3 +37,5 @@ To run your tests
 - [Insertion Sort](./python/insertion_sort/README.md)
 
 - [Merge Sort](./python/merge_sort/README.md)
+
+- [Quick Sort](./python/quick_sort/README.md)

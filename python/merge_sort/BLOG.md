@@ -1,6 +1,6 @@
 # Merge Sort
 
-Merge Sort is a sorting algorithm that a list and slowly dissects the list into smaller parts. The traversal keeps track of the smaller lists and the main one that they'll be merged back into.
+Merge Sort is a sorting algorithm that takes a list and slowly dissects it into smaller parts. The traversal keeps track of the smaller lists and the main one that they'll be merged back into.
 
 ## Pseudocode
 
