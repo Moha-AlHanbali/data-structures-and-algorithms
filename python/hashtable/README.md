@@ -88,7 +88,7 @@
 
 ## Testing Goals
 
-- HashTree
+- HashTable
 
 - [x] Adding a key/value to your hashtable results in the value being in the data structure
 - [x] Retrieving based on a key returns the value stored
