@@ -39,3 +39,5 @@ To run your tests
 - [Merge Sort](./python/merge_sort/README.md)
 
 - [Quick Sort](./python/quick_sort/README.md)
+
+- [Hash Table](./python/hashtable/README.md)
