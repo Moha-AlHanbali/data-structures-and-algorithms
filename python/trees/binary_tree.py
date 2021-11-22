@@ -12,7 +12,7 @@ class BinaryTree():
         root: Node
         """
         self.root = root
-        self.vlaues = []
+        self.values = []
         self.maximum = 0
 
     def pre_order(self):
