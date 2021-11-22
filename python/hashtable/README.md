@@ -1,4 +1,4 @@
-# Hash Table
+# Hash Table - hashmap-repeated-word
 
 - This Module provides means to create Hash Table Data Structure and modify them to some extent.
 
@@ -10,10 +10,11 @@
 
 <br>
 
-
 ## Whiteboard Process
 
--
+- hashmap-repeated-word
+
+![hashmap-repeated-word](assets/hashmap-repeated-word.png)
 
 ## Approach & Efficiency
 
@@ -27,6 +28,8 @@
 - O complexity (Time) for (HashTable.get) method is O(n).
 - O complexity (Space) for (HashTable.get) method is O(1).
 
+- O complexity (Time) for (hashmap-repeated-word) function is O(n^2).
+- O complexity (Space) for (hashmap-repeated-word) function is O(n).
 
 <br>
 
@@ -49,7 +52,6 @@
             key: str
 
             Return: int, an index number
-
 
 - HashTable.add()
 
@@ -84,6 +86,16 @@
 
             Return: Boolean.
 
+- hashmap-repeated-word()
+
+            hashmap_repeated_word is a function that maps a string into a hash table and returns the first repeated word within it.
+
+            Arguments:
+
+            str: str
+
+            Returns: str, the first repeated word
+
 <br>
 
 ## Testing Goals
@@ -98,3 +110,9 @@
 - [x] Successfully hash a key to an in-range value
 
 ---------------------------------------------------------------------------
+
+- hashmap-repeated-word
+
+- [x] Successfully returns the most repeated word in a string
+- [X] Successfully returns an empty string if no words were repeated
+- [X] Successfully raises an exception if the string is empty or if there was an input error
