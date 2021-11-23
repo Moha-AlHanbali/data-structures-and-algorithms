@@ -40,6 +40,6 @@ To run your tests
 
 - [Quick Sort](./python/quick_sort/README.md)
 
-- [Hash Table - hashmap-repeated-word](./python/hashtable/README.md)
+- [Hash Table - hashmap-repeated-word - hashmap-left-join](./python/hashtable/README.md)
 
 - [Tree Intersection](./python/tree_intersection/README.md)

@@ -1,8 +1,11 @@
 """This module tests Hash Table Module"""
 
+import pytest
+
 from hashtable.hashtable import HashTable
 from hashtable.hashmap_repeated_word import hashmap_repeated_word
-import pytest
+from hashtable.hashmap_left_join import hashmap_left_join
+
 
 # Test HashTable
 # --------------------------------------------------------------------------------
@@ -151,11 +154,11 @@ def test_hash_table_get_collision(hashtable):
 # --------------------------------------------------------------------------------
 def test_hashmap_repeated_word_case_1():
     # Arrange
-    str = "Once upon a time, there was a brave princess who..."
+    string = "Once upon a time, there was a brave princess who..."
     expected = 'a'
 
     #Act
-    actual = hashmap_repeated_word(str)
+    actual = hashmap_repeated_word(string)
 
     #Assert
     assert actual == expected
@@ -163,11 +166,11 @@ def test_hashmap_repeated_word_case_1():
 
 def test_hashmap_repeated_word_case_2():
     # Arrange
-    str = "It was the best of times, it was the worst of times, it was the age of wisdom, it was the age of foolishness, it was the epoch of belief, it was the epoch of incredulity, it was the season of Light, it was the season of Darkness, it was the spring of hope, it was the winter of despair, we had everything before us, we had nothing before us, we were all going direct to Heaven, we were all going direct the other way – in short, the period was so far like the present period, that some of its noisiest authorities insisted on its being received, for good or for evil, in the superlative degree of comparison only..."
+    string = "It was the best of times, it was the worst of times, it was the age of wisdom, it was the age of foolishness, it was the epoch of belief, it was the epoch of incredulity, it was the season of Light, it was the season of Darkness, it was the spring of hope, it was the winter of despair, we had everything before us, we had nothing before us, we were all going direct to Heaven, we were all going direct the other way – in short, the period was so far like the present period, that some of its noisiest authorities insisted on its being received, for good or for evil, in the superlative degree of comparison only..."
     expected = 'it'
 
     #Act
-    actual = hashmap_repeated_word(str)
+    actual = hashmap_repeated_word(string)
 
     #Assert
     assert actual == expected
@@ -175,11 +178,11 @@ def test_hashmap_repeated_word_case_2():
 
 def test_hashmap_repeated_word_case_3():
     # Arrange
-    str = "It was a queer, sultry summer, the summer they electrocuted the Rosenbergs, and I didn’t know what I was doing in New York..."
+    string = "It was a queer, sultry summer, the summer they electrocuted the Rosenbergs, and I didn’t know what I was doing in New York..."
     expected = 'summer'
 
     #Act
-    actual = hashmap_repeated_word(str)
+    actual = hashmap_repeated_word(string)
 
     #Assert
     assert actual == expected
@@ -188,11 +191,11 @@ def test_hashmap_repeated_word_case_3():
 
 def test_hashmap_repeated_word_case_4():
     # Arrange
-    str = "aaaa, aa,aa aaa,a aaa, aabbb, accaaaaa aaaa, aaaa, aaaa"
+    string = "aaaa, aa,aa aaa,a aaa, aabbb, accaaaaa aaaa, aaaa, aaaa"
     expected = 'aaaa'
 
     #Act
-    actual = hashmap_repeated_word(str)
+    actual = hashmap_repeated_word(string)
 
     #Assert
     assert actual == expected
@@ -200,11 +203,11 @@ def test_hashmap_repeated_word_case_4():
 
 def test_hashmap_repeated_word_case_5():
     # Arrange
-    str = "aaaa"
+    string = "aaaa"
     expected = ''
 
     #Act
-    actual = hashmap_repeated_word(str)
+    actual = hashmap_repeated_word(string)
 
     #Assert
     assert actual == expected
@@ -213,9 +216,115 @@ def test_hashmap_repeated_word_case_5():
 def test_hashmap_repeated_word_exception():
     #Assert
     with pytest.raises(Exception):
-        hashmap_repeated_word(str)
+        hashmap_repeated_word(a)
 
 
+
+
+# Test hashmap_left_join
+# --------------------------------------------------------------------------------
+def test_hashmap_left_join(synonym_hashmap, antonym_hashmap):
+    # Arrange
+    expected = [['correct', 'right', None], ['happy', 'pleased', 'sad'], ['thin', 'slim', 'fat'], ['positive', 'good', 'negative'], ['tidy', 'clean', None], ['fitting', 'adequate', None], ['denied', 'prohibited', 'allowed']]
+
+    #Act
+    actual = hashmap_left_join(synonym_hashmap, antonym_hashmap)
+
+    #Assert
+    assert actual == expected
+
+def test_hashmap_left_join_reverse(synonym_hashmap, antonym_hashmap):
+    # Arrange
+    expected = [['happy', 'sad', 'pleased'], ['thin', 'fat', 'slim'], ['positive', 'negative', 'good'], ['denied', 'allowed', 'prohibited']]
+
+    #Act
+    actual = hashmap_left_join(antonym_hashmap, synonym_hashmap)
+
+    #Assert
+    assert actual == expected
+
+
+def test_hashmap_left_join_case_2(synonym_hashmap_2, antonym_hashmap_2):
+    # Arrange
+    expected = [['diligent', 'employed', 'idle'], ['outfit', 'garb', None], ['fond', 'enamored', 'averse'], ['guide', 'usher', 'follow'], ['wrath', 'anger', 'delight']]
+
+    #Act
+    actual = hashmap_left_join(synonym_hashmap_2, antonym_hashmap_2)
+
+    #Assert
+    assert actual == expected
+
+def test_hashmap_left_join_case_2_reverse(synonym_hashmap_2, antonym_hashmap_2):
+    # Arrange
+    expected = [['diligent', 'idle', 'employed'], ['flow', 'jam', None], ['fond', 'averse', 'enamored'], ['guide', 'follow', 'usher'], ['wrath', 'delight', 'anger']]
+
+    #Act
+    actual = hashmap_left_join(antonym_hashmap_2, synonym_hashmap_2)
+
+    #Assert
+    assert actual == expected
+
+def test_hashmap_left_join_exception():
+    #Assert
+    with pytest.raises(Exception):
+        hashmap_left_join('a', 'b')
+
+# Fixtures
+# --------------------------------------------------------------------------------
 @pytest.fixture
 def hashtable():
     return HashTable()
+
+
+@pytest.fixture
+def synonym_hashmap():
+
+    synonym_hashmap = HashTable()
+
+    synonym_hashmap.add('thin','slim')
+    synonym_hashmap.add('correct','right')
+    synonym_hashmap.add('denied','prohibited')
+    synonym_hashmap.add('tidy','clean')
+    synonym_hashmap.add('positive','good')
+    synonym_hashmap.add('fitting','adequate')
+    synonym_hashmap.add('happy','pleased')
+
+    return synonym_hashmap
+
+@pytest.fixture
+def synonym_hashmap_2():
+
+    synonym_hashmap_2 = HashTable()
+    synonym_hashmap_2.add('fond','enamored')
+    synonym_hashmap_2.add('wrath','anger')
+    synonym_hashmap_2.add('diligent','employed')
+    synonym_hashmap_2.add('outfit','garb')
+    synonym_hashmap_2.add('guide','usher')
+
+    return synonym_hashmap_2
+
+@pytest.fixture
+def antonym_hashmap():
+
+    antonym_hashmap = HashTable()
+
+    antonym_hashmap.add('thin','fat')
+    antonym_hashmap.add('denied','allowed')
+    antonym_hashmap.add('positive','negative')
+    antonym_hashmap.add('happy','sad')
+
+    return antonym_hashmap
+
+@pytest.fixture
+def antonym_hashmap_2():
+
+    antonym_hashmap_2 = HashTable()
+
+    antonym_hashmap_2.add('fond','averse')
+    antonym_hashmap_2.add('wrath','delight')
+    antonym_hashmap_2.add('diligent','idle')
+    antonym_hashmap_2.add('guide','follow')
+    antonym_hashmap_2.add('flow','jam')
+
+    return antonym_hashmap_2
+
