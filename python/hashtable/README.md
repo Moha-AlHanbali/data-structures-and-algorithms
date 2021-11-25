@@ -141,5 +141,5 @@
 - hashmap-left-join
 
 - [x] Successfully returns the a collection of the first hashmap data
-- [X] Successfully returns values that did not exist in the second hashmap as None
-- [X] Successfully raises an exception if an error occurs
+- [x] Successfully returns values that did not exist in the second hashmap as None
+- [x] Successfully raises an exception if an error occurs
