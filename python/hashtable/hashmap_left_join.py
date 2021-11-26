@@ -12,25 +12,55 @@ def hashmap_left_join(hashmap1: HashTable, hashmap2: HashTable):
 
     Return: List of lists containing the joined values.
     """
+
+
     try:
         output_list = []
 
-        for bucket in range(len(hashmap1._HashTable__buckets)):
+        left_list = hashmap1.keys()
 
-            if hashmap2._HashTable__buckets[bucket]:
+        for key in range(len(left_list)):
 
-                if hashmap1.contains(str(hashmap2._HashTable__buckets[bucket].head.value[0])):
-
-                    output_list += [[hashmap1._HashTable__buckets[bucket].head.value[0], hashmap1._HashTable__buckets[bucket].head.value[1], hashmap2._HashTable__buckets[bucket].head.value[1]]]
+            if hashmap2.contains(left_list[key]):
+                output_list += [[left_list[key], hashmap1.get(left_list[key]), hashmap2.get(left_list[key])]]
 
             else:
-
-                if hashmap1._HashTable__buckets[bucket]:
-
-                    output_list += [[hashmap1._HashTable__buckets[bucket].head.value[0], hashmap1._HashTable__buckets[bucket].head.value[1], None]]
+                if left_list[key]:
+                    output_list += [[left_list[key],  hashmap1.get(left_list[key]), None]]
 
         return(output_list)
 
     except:
 
         raise Exception('Please check the hashmaps you entered and try again.')
+
+
+
+    # NOTE: ANOTHER SOLUTION USING PRIVATE ARGUMENTS
+    # try:
+    #     output_list = []
+
+    #     for bucket in range(len(hashmap1._HashTable__buckets)):
+
+    #         if hashmap2._HashTable__buckets[bucket]:
+
+    #             if hashmap1.contains(str(hashmap2._HashTable__buckets[bucket].head.value)):
+
+    #                 output_list += [[hashmap1._HashTable__buckets[bucket].head.value, hashmap1._HashTable__buckets[bucket].head.value, hashmap2._HashTable__buckets[bucket].head.value]]
+
+    #         else:
+
+    #             if hashmap1._HashTable__buckets[bucket]:
+
+    #                 output_list += [[hashmap1._HashTable__buckets[bucket].head.value, hashmap1._HashTable__buckets[bucket].head.value, None]]
+
+    #     return(output_list)
+
+    # except:
+
+    #     raise Exception('Please check the hashmaps you entered and try again.')
+
+
+
+
+

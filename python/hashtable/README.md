@@ -20,7 +20,7 @@
 
 - hashmap-left-join
 
-![hashmap-left-join](assets/hashmap-left-join.png)
+![hashmap-left-join-alternative](assets/hashmap-left-join-alternative.png)
 
 ## Approach & Efficiency
 
@@ -34,11 +34,17 @@
 - O complexity (Time) for (HashTable.get) method is O(n).
 - O complexity (Space) for (HashTable.get) method is O(1).
 
+- O complexity (Time and space) for (HashTable.keys) method is O(n).
+
+- O complexity (Time and space) for (HashTable.values) method is O(n).
+
+- O complexity (Time and space) for (HashTable.pairs) method is O(n).
+
 - O complexity (Time) for (hashmap-repeated-word) function is O(n^2).
 - O complexity (Space) for (hashmap-repeated-word) function is O(n).
 
 - O complexity (Time) for (hashmap-left-join) function is O(n^2).
-- O complexity (Space) for (hashmap-left-join) function is O(1).
+- O complexity (Space) for (hashmap-left-join) function is O(n).
 
 <br>
 
@@ -95,6 +101,30 @@
 
             Return: Boolean.
 
+- HashTable.keys
+
+            A method to return a list of hashtable keys.
+
+            Arguments: None
+
+            Return: List of data keys
+
+- HashTable.values:
+
+            A method to return a list of hashtable values.
+
+            Arguments: None
+
+            Return: List of data values
+
+- HashTable.pairs()
+
+            A method to return a list of hashtable data pairs.
+
+            Arguments: None
+
+            Return: List of data pairs
+
 - hashmap-repeated-word()
 
             hashmap_repeated_word is a function that maps a string into a hash table and returns the first repeated word within it.
@@ -127,6 +157,9 @@
 - [X] Successfully handle a collision within the hashtable
 - [X] Successfully retrieve a value from a bucket within the hashtable that has a collision
 - [x] Successfully hash a key to an in-range value
+- [x] Successfully returns a list of keys
+- [x] Successfully returns a list of values
+- [x] Successfully returns a list of data pairs
 
 ---------------------------------------------------------------------------
 

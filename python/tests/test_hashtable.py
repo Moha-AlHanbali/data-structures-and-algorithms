@@ -149,6 +149,75 @@ def test_hash_table_get_collision(hashtable):
     assert actual_1 == excepted_1
     assert actual_2 == excepted_2
 
+def test_hash_table_get_keys(synonym_hashmap):
+    # Arrange
+    excepted = ['correct', 'happy', 'thin', 'positive', 'tidy', 'fitting', 'denied']
+
+    #Act
+    actual = synonym_hashmap.keys()
+
+    #Assert
+    assert actual == excepted
+
+
+def test_hash_table_get_keys_empty():
+    # Arrange
+    hashmap = HashTable()
+    excepted = []
+
+    #Act
+    actual = hashmap.keys()
+
+    #Assert
+    assert actual == excepted
+
+
+def test_hash_table_get_values(synonym_hashmap):
+    # Arrange
+    excepted = ['right', 'pleased', 'slim',  'good', 'clean', 'adequate', 'prohibited']
+
+    #Act
+    actual = synonym_hashmap.values()
+
+
+    #Assert
+    assert actual == excepted
+
+def test_hash_table_get_values_empty():
+    # Arrange
+    hashmap = HashTable()
+    excepted = []
+
+    #Act
+    actual = hashmap.values()
+
+
+    #Assert
+    assert actual == excepted
+
+
+def test_hash_table_get_pairs(synonym_hashmap):
+    # Arrange
+    excepted = [['correct', 'right'], ['happy','pleased'], ['thin','slim'],  ['positive','good'], ['tidy','clean'], ['fitting','adequate'], ['denied','prohibited']]
+
+    #Act
+    actual = synonym_hashmap.pairs()
+
+
+    #Assert
+    assert actual == excepted
+
+def test_hash_table_get_pairs_empty():
+    # Arrange
+    hashmap = HashTable()
+    excepted = []
+
+    #Act
+    actual = hashmap.pairs()
+
+
+    #Assert
+    assert actual == excepted
 
 # Test hashmap_repeated_word
 # --------------------------------------------------------------------------------

@@ -60,6 +60,35 @@ class HashTable():
 
             Return: Boolean.
 
+    ------------------------------------------------------------
+
+            keys:
+
+            A method to return a list of hashtable keys.
+
+            Arguments: None
+
+            Return: List of data keys
+
+    ------------------------------------------------------------
+
+            values:
+
+            A method to return a list of hashtable values.
+
+            Arguments: None
+
+            Return: List of data values
+
+    ------------------------------------------------------------
+
+            pairs:
+
+            A method to return a list of hashtable data pairs.
+
+            Arguments: None
+
+            Return: List of data pairs
     """
 
     def __init__(self, size = 1024):
@@ -105,3 +134,27 @@ class HashTable():
                 current = current.next
 
         return None
+
+
+    def keys(self):
+        content_list = []
+        for bucket in self.__buckets:
+            if bucket:
+                content_list += [bucket.head.value[0]]
+        return content_list
+
+
+    def values(self):
+        content_list = []
+        for bucket in self.__buckets:
+            if bucket:
+                content_list += [bucket.head.value[1]]
+        return content_list
+
+
+    def pairs(self):
+        content_list = []
+        for bucket in self.__buckets:
+            if bucket:
+                content_list += [bucket.head.value]
+        return content_list
