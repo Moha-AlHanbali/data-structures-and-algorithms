@@ -12,7 +12,7 @@
 
 ## Whiteboard Process
 
-- depth_first_search
+- breadth_first_search
 
 ![graph-breadth-first](assets/graph-breadth-first.png)
 
