@@ -33,8 +33,8 @@ class Queue:
         return len(self.dq)
 
     def enqueue(self, value):
-        self.dq.appendleft(value)
+        self.dq.append(value)
 
     def dequeue(self):
-        self.dq.pop(0)
+        return self.dq.popleft()
 

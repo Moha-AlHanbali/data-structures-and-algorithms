@@ -44,7 +44,7 @@ class Stack:
         self.dq.append(value)
 
     def pop(self):
-        self.dq.pop()
+        return self.dq.pop()
 
     def peek(self):
         return self.dq[-1]

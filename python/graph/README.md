@@ -1,4 +1,4 @@
-# Graph
+# Graph - graph-breadth-first
 
 - This Module provides means to create Graph Data Structure and modify them to some extent.
 
@@ -11,6 +11,10 @@
 <br>
 
 ## Whiteboard Process
+
+- depth_first_search
+
+![graph-breadth-first](assets/graph-breadth-first.png)
 
 <br>
 
@@ -26,10 +30,10 @@
 - O complexity (Space) for (Graph.get_vertices) method is O(1).
 
 - O complexity (Time) for (Graph.breadth_first_search) method is O(nlog(n)).
-- O complexity (Space) for (Graph.breadth_first_search) method is O(1).
+- O complexity (Space) for (Graph.breadth_first_search) method is O(n).
 
 - O complexity (Time) for (Graph.depth_first_search) method is O(nlog(n)).
-- O complexity (Space) for (Graph.depth_first_search) method is O(1).
+- O complexity (Space) for (Graph.depth_first_search) method is O(n).
 
 <br>
 
@@ -121,3 +125,11 @@
 - [x] The proper size is returned, representing the number of nodes in the graph
 - [x] A graph with only one node and edge can be properly returned
 - [x] An empty graph properly returns null
+
+-------------------------------------------------------------------------------
+
+- breadth_first_search
+
+- [x] Successfully returns a collection of graph vertices values
+- [x] Successfully handles graphs with single vertex
+- [x] Successfully raises exceptions on input errors
