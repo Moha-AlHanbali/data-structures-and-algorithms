@@ -5,7 +5,8 @@ import pytest
 from graph.graph import  Graph
 from graph.vertex import Vertex
 
-
+# Test Graph
+# ------------------------------------------------
 def test_add_vertex():
   graph = Graph()
   expected = "test"
@@ -110,3 +111,111 @@ def test_get_neighbors():
     assert neighbor_edge.vertex.value == 'banana'
 
     assert neighbor_edge.weight == 44
+
+
+# Test breadth_first_search
+# ------------------------------------------------
+
+def test_breadth_first_search_case1(simple_graph):
+    # Arrange
+    expected = [1, 5 ,2 ,3, 4]
+
+    # Act
+    actual = simple_graph[0].breadth_first_search(simple_graph[1])
+
+    # Assert
+    assert actual == expected
+
+
+def test_breadth_first_search_case2(example_graph):
+    # Arrange
+    expected = ['Pandora', 'Arandelle', 'Metroville', 'Monstropolis', 'Naboo', 'Narnia']
+
+    # Act
+    actual = example_graph[0].breadth_first_search(example_graph[1])
+
+    # Assert
+    assert actual == expected
+
+def test_breadth_first_search_single():
+    # Arrange
+    graph = Graph()
+    vertex_1 = graph.add_vertex(1)
+
+    expected = [1]
+
+    # Act
+    actual = graph.breadth_first_search(vertex_1)
+
+    # Assert
+    assert actual == expected
+
+def test_breadth_first_search_empty():
+    # Arrange
+    graph = Graph()
+
+    # Assert
+    with pytest.raises(Exception):
+        graph.breadth_first_search(vertex_1)
+
+# Fixtures
+# ------------------------------------------------
+@pytest.fixture
+def simple_graph():
+    graph = Graph()
+
+    vertex_1 = graph.add_vertex(1)
+
+    vertex_2 = graph.add_vertex(2)
+
+    vertex_3 = graph.add_vertex(3)
+
+    vertex_4 = graph.add_vertex(4)
+
+    vertex_5 = graph.add_vertex(5)
+
+    graph.add_edge(vertex_1,vertex_5)
+
+    graph.add_edge(vertex_1,vertex_2)
+
+    graph.add_edge(vertex_1,vertex_3)
+
+    graph.add_edge(vertex_5,vertex_3)
+
+    graph.add_edge(vertex_3,vertex_4)
+
+    return graph, vertex_1
+
+@pytest.fixture
+def example_graph():
+    graph = Graph()
+
+    pandora = graph.add_vertex('Pandora')
+    arandelle = graph.add_vertex('Arandelle')
+    metroville = graph.add_vertex('Metroville')
+    monstropolis = graph.add_vertex('Monstropolis')
+    narnia = graph.add_vertex('Narnia')
+    naboo = graph.add_vertex('Naboo')
+
+    graph.add_edge(pandora, arandelle)
+    graph.add_edge(arandelle, pandora)
+
+    graph.add_edge(arandelle, metroville)
+    graph.add_edge(metroville, arandelle)
+
+    graph.add_edge(arandelle, monstropolis)
+    graph.add_edge(monstropolis, arandelle)
+
+    graph.add_edge(metroville, naboo)
+    graph.add_edge(naboo, metroville)
+
+    graph.add_edge(monstropolis, naboo)
+    graph.add_edge(naboo, monstropolis)
+
+    graph.add_edge(metroville, narnia)
+    graph.add_edge(narnia, metroville)
+
+    graph.add_edge(narnia, naboo)
+    graph.add_edge(naboo, narnia)
+
+    return graph, pandora

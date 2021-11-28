@@ -118,25 +118,56 @@ class Graph:
         return self.__adjacency_list.get(vertex, [])
 
 
-    def breadth_first_search(self, start_vertex, action = (lambda vertes:None)):
+    def breadth_first_search(self, start_vertex):
+        try:
+            vertices= []
+            queue = Queue()
+            visited = set()
 
-        queue = Queue()
-        visited = set()
+            queue.enqueue(start_vertex)
+            visited.add(start_vertex)
 
-        queue.enqueue(start_vertex)
-        visited.add(start_vertex)
+            while len(queue):
 
-        while len(queue):
-            current_vertex = queue.dequeue()
-            action(current_vertex)
+                current_vertex = queue.dequeue()
 
-            neighbors = self.get_neighbors(start_vertex)
-            for edge in neighbors:
-                neighbor = edge.vertex
+                vertices +=  [current_vertex.value]
 
-                if neighbor not in visited:
-                    visited.add(neighbor)
-                    queue.enqueue(neighbor)
+                neighbors = self.get_neighbors(current_vertex)
+                for edge in neighbors:
+                    neighbor = edge.vertex
+
+                    if neighbor not in visited:
+                        visited.add(neighbor)
+
+                        queue.enqueue(neighbor)
+
+            return vertices
+
+        except:
+            raise Exception("Pease check your inputs and try again.")
+
+
+    #NOTE: ALTERNATIVE TO PERFORM ACTIONS ON EACH GRAPH VERTEX
+    # def breadth_first_search(self, start_vertex, action = (lambda vertes:None)):
+
+    #     queue = Queue()
+    #     visited = set()
+
+    #     queue.enqueue(start_vertex)
+    #     visited.add(start_vertex)
+
+    #     while len(queue):
+    #         current_vertex = queue.dequeue()
+    #         action(current_vertex)
+
+    #         neighbors = self.get_neighbors(start_vertex)
+    #         for edge in neighbors:
+    #             neighbor = edge.vertex
+
+    #             if neighbor not in visited:
+    #                 visited.add(neighbor)
+    #                 queue.enqueue(neighbor)
 
 
     def depth_first_search(self, start_vertex, action = (lambda vertes:None)):
@@ -153,7 +184,7 @@ class Graph:
             if current_vertex not in visited:
                 visited.add(current_vertex)
 
-                neighbors = self.get_neighbors(start_vertex)
+                neighbors = self.get_neighbors(current_vertex)
                 for edge in neighbors:
                     neighbor = edge.vertex
                     stack.push(neighbor)
