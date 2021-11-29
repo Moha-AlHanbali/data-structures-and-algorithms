@@ -199,6 +199,7 @@ def linked_list_zip(list1:LinkedList, list2:LinkedList):
     return new_list
 
 
+
 def reverse_list(list:LinkedList):
     temp = list.head
     current = temp.next

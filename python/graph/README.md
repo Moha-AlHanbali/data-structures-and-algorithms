@@ -1,4 +1,4 @@
-# Graph - graph-breadth-first
+# Graph - graph-breadth-first - business_trip
 
 - This Module provides means to create Graph Data Structure and modify them to some extent.
 
@@ -18,6 +18,12 @@
 
 <br>
 
+- business_trip
+
+![graph-business-trip](assets/graph-business-trip.png)
+
+<br>
+
 ## Approach & Efficiency
 
 - O complexity (Time and Space) for (Graph.size) method is O(1).
@@ -34,6 +40,9 @@
 
 - O complexity (Time) for (Graph.depth_first_search) method is O(nlog(n)).
 - O complexity (Space) for (Graph.depth_first_search) method is O(n).
+
+- O complexity (Time) for (business_trip) function is O(n^2).
+- O complexity (Space) for (business_trip) function is O(1).
 
 <br>
 
@@ -111,6 +120,16 @@
 
             Return: None
 
+- business_trip()
+
+            business_trip calculates if trips between cities are possible and calculates their total cost.
+
+            Arguments:
+            graph: graph of available flights and their costs
+            array: an array containing destinations
+
+            Return: Str, the cost or None
+
 <br>
 
 ## Testing Goals
@@ -132,4 +151,13 @@
 
 - [x] Successfully returns a collection of graph vertices values
 - [x] Successfully handles graphs with single vertex
+- [x] Successfully raises exceptions on input errors
+
+-------------------------------------------------------------------------------
+
+- business_trip
+
+- [x] Successfully returns the cost for a valid flight path
+- [x] Successfully returns the cost for an invalid flight path
+- [x] Successfully returns the cost for an invalid flight path that come after valid ones
 - [x] Successfully raises exceptions on input errors
