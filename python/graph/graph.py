@@ -170,26 +170,57 @@ class Graph:
     #                 queue.enqueue(neighbor)
 
 
-    def depth_first_search(self, start_vertex, action = (lambda vertes:None)):
+    def depth_first_search(self, start_vertex):
 
-        stack = Stack()
-        visited = set()
+        try:
+            vertices= []
+            stack = Stack()
+            visited = set()
 
-        stack.push(start_vertex)
-        visited.add(start_vertex)
+            stack.push(start_vertex)
+            while len(stack):
+                current_vertex = stack.pop()
 
-        while len(stack):
-            current_vertex = stack.peek()
+                if current_vertex not in visited:
+                    visited.add(current_vertex)
+                    vertices += [current_vertex.value]
 
-            if current_vertex not in visited:
-                visited.add(current_vertex)
+                    neighbors = self.get_neighbors(current_vertex)
 
-                neighbors = self.get_neighbors(current_vertex)
-                for edge in neighbors:
-                    neighbor = edge.vertex
-                    stack.push(neighbor)
-                    action(current_vertex)
+                    for edge in neighbors:
+                        neighbor = edge.vertex
+                        if neighbor not in visited:
+                            stack.push(neighbor)
 
-            else:
-                stack.pop()
+            return vertices
 
+        except:
+            raise Exception("Pease check your inputs and try again.")
+
+
+    #NOTE: ALTERNATIVE TO PERFORM ACTIONS ON EACH GRAPH VERTEX
+    # def depth_first_search(self, start_vertex, action = (lambda vertes:None)):
+        # vertices= []
+        # stack = Stack()
+        # visited = set()
+
+        # stack.push(start_vertex)
+        # while len(stack):
+        #     current_vertex = stack.peek()
+
+        #     if current_vertex not in visited:
+        #         visited.add(current_vertex)
+        #         action(current_vertex)
+
+        #         neighbors = self.get_neighbors(current_vertex)
+
+        #         for edge in neighbors:
+        #             neighbor = edge.vertex
+        #             if neighbor not in visited:
+        #                 stack.push(neighbor)
+
+
+        #     else:
+        #         stack.pop()
+
+        # return vertices
