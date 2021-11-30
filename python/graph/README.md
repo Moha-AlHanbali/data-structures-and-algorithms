@@ -1,4 +1,4 @@
-# Graph - graph-breadth-first - business_trip
+# Graph - graph-breadth-first - business-trip - graph-depth-first
 
 - This Module provides means to create Graph Data Structure and modify them to some extent.
 
@@ -21,6 +21,12 @@
 - business_trip
 
 ![graph-business-trip](assets/graph-business-trip.png)
+
+<br>
+
+- graph-depth-first
+
+![graph-depth-first](assets/graph-depth-first.png)
 
 <br>
 
@@ -160,4 +166,12 @@
 - [x] Successfully returns the cost for a valid flight path
 - [x] Successfully returns the cost for an invalid flight path
 - [x] Successfully returns the cost for an invalid flight path that come after valid ones
+- [x] Successfully raises exceptions on input errors
+
+-------------------------------------------------------------------------------
+
+- depth_first_search
+
+- [x] Successfully returns a collection of graph vertices values
+- [x] Successfully handles graphs with single vertex
 - [x] Successfully raises exceptions on input errors

@@ -222,6 +222,43 @@ def test_business_trip_error():
     with pytest.raises(Exception):
         graph.business_trip(graph, [])
 
+
+# Test depth_first_search
+# ------------------------------------------------
+
+def test_depth_first_search_example(depth_graph):
+    # Arrange
+    expected = ['a', 'b', 'c', 'g', 'd', 'e', 'h', 'f']
+
+    # Act
+    actual = depth_graph[0].depth_first_search(depth_graph[1])
+
+    # Assert
+    assert actual == expected
+
+
+def test_depth_first_search_single():
+    # Arrange
+    graph = Graph()
+    vertex_1 = graph.add_vertex(1)
+
+    expected = [1]
+
+    # Act
+    actual = graph.depth_first_search(vertex_1)
+
+    # Assert
+    assert actual == expected
+
+def test_depth_first_search_empty():
+    # Arrange
+    graph = Graph()
+
+    # Assert
+    with pytest.raises(Exception):
+        graph.depth_first_search(vertex_1)
+
+
 # Fixtures
 # ------------------------------------------------
 @pytest.fixture
@@ -331,3 +368,54 @@ def travel_graph():
     list5 = [narnia, naboo, pandora]
 
     return graph, list1, list2, list3, list4, list5
+
+
+@pytest.fixture
+def depth_graph():
+
+    graph = Graph()
+
+    vertex_a = graph.add_vertex('a')
+
+    vertex_b = graph.add_vertex('b')
+
+    vertex_c = graph.add_vertex('c')
+
+    vertex_d = graph.add_vertex('d')
+
+    vertex_e = graph.add_vertex('e')
+
+    vertex_f = graph.add_vertex('f')
+
+    vertex_g = graph.add_vertex('g')
+
+    vertex_h = graph.add_vertex('h')
+
+    graph.add_edge(vertex_a, vertex_d)
+    graph.add_edge(vertex_d, vertex_a)
+
+    graph.add_edge(vertex_b, vertex_d)
+    graph.add_edge(vertex_d, vertex_b)
+
+    graph.add_edge(vertex_d, vertex_f)
+    graph.add_edge(vertex_f, vertex_d)
+
+    graph.add_edge(vertex_d, vertex_h)
+    graph.add_edge(vertex_h, vertex_d)
+
+    graph.add_edge(vertex_d, vertex_e)
+    graph.add_edge(vertex_e, vertex_d)
+
+    graph.add_edge(vertex_f, vertex_h)
+    graph.add_edge(vertex_h, vertex_f)
+
+    graph.add_edge(vertex_a, vertex_b)
+    graph.add_edge(vertex_b, vertex_a)
+
+    graph.add_edge(vertex_b, vertex_c)
+    graph.add_edge(vertex_c, vertex_b)
+
+    graph.add_edge(vertex_c, vertex_g)
+    graph.add_edge(vertex_g, vertex_c)
+
+    return graph, vertex_a
