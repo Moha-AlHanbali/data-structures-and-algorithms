@@ -226,12 +226,34 @@ def test_business_trip_error():
 # Test depth_first_search
 # ------------------------------------------------
 
+def test_depth_first_search_simple(depth_first_simple):
+    # Arrange
+    expected = [1, 2, 3 ,4 ,5]
+
+    # Act
+    actual = depth_first_simple[0].depth_first_search(depth_first_simple[1])
+
+    # Assert
+    assert actual == expected
+
+
 def test_depth_first_search_example(depth_graph):
     # Arrange
     expected = ['a', 'b', 'c', 'g', 'd', 'e', 'h', 'f']
 
     # Act
     actual = depth_graph[0].depth_first_search(depth_graph[1])
+
+    # Assert
+    assert actual == expected
+
+
+def test_depth_first_search_cities(depth_cities_graph):
+    # Arrange
+    expected = ['Pandora', 'Metroville', 'Narnia', 'Naboo', 'Monstropolis', 'Arandelle']
+
+    # Act
+    actual = depth_cities_graph[0].depth_first_search(depth_cities_graph[1])
 
     # Assert
     assert actual == expected
@@ -249,6 +271,8 @@ def test_depth_first_search_single():
 
     # Assert
     assert actual == expected
+
+
 
 def test_depth_first_search_empty():
     # Arrange
@@ -419,3 +443,70 @@ def depth_graph():
     graph.add_edge(vertex_g, vertex_c)
 
     return graph, vertex_a
+
+@pytest.fixture
+def depth_first_simple():
+    graph = Graph()
+
+    vertex_1 = graph.add_vertex(1)
+
+    vertex_2 = graph.add_vertex(2)
+
+    vertex_3 = graph.add_vertex(3)
+
+    vertex_4 = graph.add_vertex(4)
+
+    vertex_5 = graph.add_vertex(5)
+
+    graph.add_edge(vertex_1,vertex_5)
+
+    graph.add_edge(vertex_1,vertex_3)
+
+    graph.add_edge(vertex_1,vertex_2)
+
+    graph.add_edge(vertex_5,vertex_3)
+
+    graph.add_edge(vertex_3,vertex_4)
+
+    return graph, vertex_1
+
+
+@pytest.fixture
+def depth_cities_graph():
+    graph = Graph()
+
+    pandora = graph.add_vertex('Pandora')
+    arandelle = graph.add_vertex('Arandelle')
+    metroville = graph.add_vertex('Metroville')
+    monstropolis = graph.add_vertex('Monstropolis')
+    narnia = graph.add_vertex('Narnia')
+    naboo = graph.add_vertex('Naboo')
+
+    graph.add_edge(pandora, arandelle, 150)
+    graph.add_edge(arandelle, pandora, 150)
+
+    graph.add_edge(arandelle, monstropolis, 42)
+    graph.add_edge(monstropolis, arandelle, 42)
+
+    graph.add_edge(monstropolis, naboo, 73)
+    graph.add_edge(naboo, monstropolis, 73)
+
+    graph.add_edge(pandora, metroville, 82)
+    graph.add_edge(metroville, pandora, 82)
+
+    graph.add_edge(metroville, naboo, 26)
+    graph.add_edge(naboo, metroville, 26)
+
+    graph.add_edge(metroville, monstropolis, 105)
+    graph.add_edge(monstropolis, metroville, 105)
+
+    graph.add_edge(arandelle, metroville, 99)
+    graph.add_edge(metroville, arandelle, 99)
+
+    graph.add_edge(narnia, naboo, 250)
+    graph.add_edge(naboo, narnia, 250)
+
+    graph.add_edge(metroville, narnia, 37)
+    graph.add_edge(narnia, metroville, 37)
+
+    return graph, pandora

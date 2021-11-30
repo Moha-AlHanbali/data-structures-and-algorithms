@@ -179,7 +179,7 @@ class Graph:
 
             stack.push(start_vertex)
             while len(stack):
-                current_vertex = stack.peek()
+                current_vertex = stack.pop()
 
                 if current_vertex not in visited:
                     visited.add(current_vertex)
@@ -191,10 +191,6 @@ class Graph:
                         neighbor = edge.vertex
                         if neighbor not in visited:
                             stack.push(neighbor)
-
-
-                else:
-                    stack.pop()
 
             return vertices
 
@@ -228,7 +224,3 @@ class Graph:
         #         stack.pop()
 
         # return vertices
-
-
-
-
