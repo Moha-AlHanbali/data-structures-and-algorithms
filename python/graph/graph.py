@@ -224,3 +224,70 @@ class Graph:
         #         stack.pop()
 
         # return vertices
+
+    def connected_vertices(self, start_vertex, end_vertix, adjacency_list):
+        try:
+
+            if end_vertix in adjacency_list[start_vertex]:
+                return True
+
+            queue = Queue()
+            visited = set()
+
+            queue.enqueue(start_vertex)
+            visited.add(start_vertex)
+
+            while len(queue):
+
+                current_vertex = queue.dequeue()
+
+                for neighbor in adjacency_list[current_vertex]:
+
+                    if neighbor is end_vertix:
+                        return True
+
+                    if neighbor not in visited:
+                        visited.add(neighbor)
+                        queue.enqueue(neighbor)
+
+            return False
+
+        except:
+            raise Exception("Pease check your inputs and try again.")
+
+
+# graph = Graph()
+
+# vertex_1 = graph.add_vertex(1)
+
+# vertex_2 = graph.add_vertex(2)
+
+# vertex_3 = graph.add_vertex(3)
+
+# vertex_4 = graph.add_vertex(4)
+
+# vertex_5 = graph.add_vertex(5)
+
+# vertex_6 = graph.add_vertex(6)
+
+# graph.add_edge(vertex_1,vertex_5)
+
+# graph.add_edge(vertex_1,vertex_2)
+
+# graph.add_edge(vertex_1,vertex_3)
+
+# graph.add_edge(vertex_5,vertex_3)
+
+# graph.add_edge(vertex_3,vertex_4)
+
+# a_l = {
+#        vertex_1:[vertex_2, vertex_3, vertex_5],
+#        vertex_2:[vertex_1],
+#        vertex_5:[vertex_1, vertex_3],
+#        vertex_3:[vertex_1,vertex_5, vertex_4],
+#        vertex_4:[vertex_3],
+#        }
+
+
+# print(graph.connected_vertices(vertex_1, vertex_4, a_l))
+# print(graph.connected_vertices(vertex_1, vertex_6, a_l))
